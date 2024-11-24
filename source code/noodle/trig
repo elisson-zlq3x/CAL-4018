@@ -1,0 +1,2307 @@
+\ Copyright 2017, 2019 by Jasper Paulsen.
+
+To add a mixio to another mixio:
+  Privatize the mixio.
+  Normalize the mixio.
+  Normalize the other mixio.
+  Add the mixio's whole number to the other mixio's whole number.
+  Add the mixio's nips to the other mixio's nips.
+  Add the mixio's trifles to the other mixio's trifles.
+  Normalize the other mixio.
+
+To add a mixio to another mixio returning a mixio called result:
+  Privatize the other mixio.
+  Add the mixio to the other mixio.
+  Put the other mixio in the result.
+
+To add a number to a mixio:
+  Normalize the mixio.
+  Add the number to the mixio's whole number.
+  Normalize the mixio.
+
+To add tau to some radians:
+  Get tau returning some other radians.
+  Add the other radians to the radians.
+
+To add some trifles to a mixio:
+  Add the trifles to the mixio's trifles.
+  Normalize the mixio.
+
+To cache mixios given a mixio and a number:
+  If the number is less than 1, exit.
+  If the mixio is not the first cached mixio,
+    Clear cached mixios;
+    Put the mixio in the first cached mixio.
+  If the number is less than 2, exit.
+  If the second cached mixio is 0,
+    Put the mixio in the second cached mixio;
+    Multiply the second cached mixio by the mixio.
+  If the number is less than 3, exit.
+  If the number is at least 4 and the fourth cached mixio is zero,
+    Put the second cached mixio in the fourth cached mixio;
+    Multiply the fourth cached mixio by the second cached mixio.
+  If the number is at least 8 and the eighth cached mixio is zero,
+    Put the fourth cached mixio in the eighth cached mixio;
+    Multiply the eighth cached mixio by the fourth cached mixio.
+  If the number is at least 16 and the sixteenth cached mixio is zero,
+    Put the eighth cached mixio in the sixteenth cached mixio;
+    Multiply the sixteenth cached mixio by the eighth cached mixio.
+  Divide the number by 4 giving a quotient and a remainder.
+  If the remainder is 3 and the third cached mixio is zero,
+    Put the mixio in the third cached mixio;
+    Multiply the third cached mixio by the second cached mixio.
+  If the number is less than 5, exit.
+  Divide the number by 8 giving the quotient and the remainder.
+  If the remainder is 5 and the fifth cached mixio is zero,
+    Put the mixio in the fifth cached mixio;
+    Multiply the fifth cached mixio by the fourth cached mixio.
+  If the remainder is 6 and the sixth cached mixio is zero,
+    Put the second cached mixio in the sixth cached mixio;
+    Multiply the sixth cached mixio by the fourth cached mixio.
+  If the remainder is 7 and the seventh cached mixio is zero,
+    Put the third cached mixio in the seventh cached mixio;
+    Multiply the seventh cached mixio by the fourth cached mixio.
+
+To clear cached mixios:
+  Clear the first cached mixio.
+  Clear the second cached mixio.
+  Clear the third cached mixio.
+  Clear the fourth cached mixio.
+  Clear the fifth cached mixio.
+  Clear the sixth cached mixio.
+  Clear the seventh cached mixio.
+  Clear the eighth cached mixio.
+  Clear the sixteenth cached mixio.
+
+To clear a mixio:
+  Clear the mixio's whole number.
+  Clear the mixio's nips.
+  Clear the mixio's trifles.
+
+To convert a mixio to a ratio:
+  Privatize the mixio.
+  Normalize the mixio.
+  Put the mixio's trifles in the ratio.
+  Reduce the ratio.
+  Put the mixio's nips / the trifle root in another ratio.
+  Add the other ratio to the ratio.
+  Reduce the ratio.
+  Add the mixio's whole number to the ratio.
+  Reduce the ratio.
+
+To convert a mixio to a string:
+  If the mixio is 0,
+    Put "0" in the string; exit.
+  Put "" in the string.
+  Privatize the mixio.
+  Normalize the mixio.
+  If the mixio's whole number is -1,
+    Subtract the trifle root from the mixio's nips;
+    Put 0 in the mixio's whole number.
+  If the mixio's whole number is negative,
+    Negate the mixio;
+    Normalize the mixio;
+    Put "-" into the string.
+  If the mixio's whole number is positive,
+    Append the mixio's whole number to the string.
+  Put the mixio's nips in a number.
+  Multiply the number by the trifle root.
+  Add the mixio's trifles to the number.
+  If the number is 0, exit.
+  Put the number / the trifle denominator in a ratio.
+  Reduce the ratio.
+  If the mixio's whole number is not 0,
+    Append the dash byte to the string.
+  Append the ratio's numerator then "/" then the ratio's denominator
+    To the string.
+
+To convert a mixio to a string (long):
+  Privatize the mixio.
+  Convert the mixio's whole number into the string.
+  If the mixio's nips are negative,
+    Negate the mixio's nips;
+    Append " - " then the mixio's nips
+      Then "/" then the trifle root to the string;
+    Negate the mixio's nips.
+  If the mixio's nips are positive,
+    Append " + " then the mixio's nips
+      Then "/" then the trifle root to the string.
+  If the mixio's trifles are negative,
+    Negate the mixio's trifles;
+    Append " - " then the mixio's trifles
+      Then "/" then the trifle denominator to the string;
+    Negate the mixio's trifles.
+  If the mixio's trifles are positive,
+    Append " + " then the mixio's trifles
+      Then "/" then the trifle denominator to the string.
+
+To convert a number into a mixio:
+  Put the number in the mixio's whole number.
+  Put 0 in the mixio's nips.
+  Put 0 in the mixio's trifles.
+
+To convert some radians to a mixio:
+  Put the radians in the mixio.
+
+To convert some radians to a trig angle:
+  \ both are counter-clockwise from right / east
+  Put the radians in a mixio.
+  Multiply the mixio by 6.
+  Put tau in some tau radians.
+  Divide the mixio by the tau radians.
+  Multiply the mixio by 60.
+  Normalize the mixio.
+  Put the mixio's whole number in the trig angle's degrees.
+  Put 0 in the mixio's whole number.
+  Multiply the mixio by 60.
+  Normalize the mixio.
+  Put the mixio's whole number in the trig angle's minutes.
+  Put 0 in the mixio's whole number.
+  Multiply the mixio by 60.
+  Normalize the mixio.
+  Put the mixio's whole number in the trig angle's seconds.
+  Put 0 in the mixio's whole number.
+  Multiply the mixio by 100.
+  Normalize the mixio.
+  Put the mixio's whole number in the trig angle's hundredths.
+  Put the trifle root in a number called threshold.
+  Divide the threshold by 2.
+  If the mixio's nips are at least the threshold,
+    Add 1 to the trig angle's hundredths.
+  Subtract the trifle root from the threshold.
+  If the mixio's nips are less than the threshold,
+    Subtract 1 from the trig angle's hundredths.
+
+To convert a ratio to a mixio:
+  Privatize the ratio.
+  If the ratio is -1/2, set a flag.
+  Convert the ratio to a mixed.
+  Put the mixed's whole number in the mixio's whole number.
+  If the mixed's ratio is negative,
+    Set a sign flag;
+    De-sign the mixed's ratio.
+  Scale the mixed's ratio's numerator
+    Given the trifle denominator / the mixed's denominator.
+  Divide the mixed's ratio's numerator by the trifle root
+    Giving the mixio's nips and the mixio's trifles.
+  If the sign flag is set,
+    Negate the mixio's nips;
+    Negate the mixio's trifles.
+  Normalize the mixio.
+
+To convert some trifles into a ratio;
+To put some trifles in a ratio:
+  Put the trifles / the trifle denominator in the ratio.
+
+To convert a trig angle to a mixio:
+  Put the trig angle's degrees in the mixio's whole number.
+  Put the trig angle's minutes in a number.
+  Multiply the number by 60.
+  Add the trig angle's seconds to the number.
+  Multiply the number by 100.
+  Add the trig angle's hundredths to the number.
+  Scale the number by the trifle denominator / 360000.
+  Put the number in the mixio's trifles.
+  Normalize the mixio.
+
+To convert a trig angle to some radians:
+  Put the trig angle's degrees in a mixio's whole number.
+  Put the trig angle's minutes in the mixio's nips.
+  Multiply the mixio's nips by the trifle root / 60.
+  Put the trig angle's seconds in the mixio's trifles.
+  Multiply the mixio's trifles by the trifle denominator / 3600.
+  Put the trig angle's hundredths in a number.
+  Multiply the number by the trifle denominator / 360000.
+  Add the number to the mixio's trifles.
+  Normalize the mixio.
+  Divide the mixio by 10.
+  Put tau in some tau radians.
+  Multiply the mixio by the tau radians.
+  Divide the mixio by 36.
+  Put the mixio in the radians.
+
+To convert a trig angle to a string:
+  Put the trig angle's degrees
+    Then the degree-symbol byte in the string.
+  If the trig angle is just degrees, exit.
+  Append the trig angle's minutes
+    Then the minute-symbol byte to the string.
+  If the trig angle is just degrees and minutes, exit.
+  If the trig angle's hundredths are 0,
+    Append the trig angle's seconds
+      Then the second-symbol byte to the string;
+    Exit.
+  If the trig angle's hundredths are negative,
+    Append the trig angle's seconds
+      Then the second-symbol byte
+      Then the trig angle's hundredths
+      Then "cas" to the string;
+    Exit.
+  If the trig angle's hundredths are at least 100,
+    Append the trig angle's seconds
+      Then the second-symbol byte
+      Then the trig angle's hundredths
+      Then "cas" to the string;
+    Exit.
+  If the trig angle's hundredths are less than 10,
+    Append the trig angle's seconds
+      Then ".0" then the trig angle's hundredths
+      Then the second-symbol byte to the string;
+    Exit.
+    Append the trig angle's seconds
+      Then the period byte
+      Then the trig angle's hundredths
+      Then the second-symbol byte to the string.
+
+A cosine is a ratio.
+
+To de-sign a mixio:
+  If the mixio is at least 0/1, exit.
+  Multiply the mixio by -1.
+
+To debug a mixio:
+  Convert the mixio to a string.
+  Debug the string.
+
+To debug a mixio (long):
+  Convert the mixio to a string (long).
+  Debug the string.
+
+To debug a string and a mixio and another string and another mixio (long):
+  Convert the mixio to a string called description (long).
+  Convert the other mixio to a string called other description (long).
+  Debug the string then the description then the other string then the other description.
+
+To debug a trig angle:
+  Convert the trig angle to a string.
+  Debug the string.
+
+To decide if a mixio and another mixio are both non-negative proper fractions:
+  If the mixio is not properly non-negative, say no.
+  If the other mixio is not properly non-negative, say no.
+  Say yes.
+
+To decide if a mixio is another mixio:
+  Privatize the mixio.
+  Privatize the other mixio.
+  Normalize the mixio.
+  Normalize the other mixio.
+  If the mixio's whole number is not the other mixio's whole number, say no.
+  If the mixio's nips are not the other mixio's nips, say no.
+  If the mixio's trifles are not the other mixio's trifles, say no.
+  Say yes.
+
+To decide if a mixio is any number:
+  Privatize the mixio.
+  Normalize the mixio.
+  If the mixio's nips are not 0, say no.
+  If the mixio's trifles are not 0, say no.
+  Say yes.
+
+To decide if a mixio is at least another mixio:
+  If the mixio is less than the other mixio, say no.
+  Say yes.
+
+To decide if a mixio is at least a number:
+  Convert the number into another mixio.
+  If the mixio is less than the other mixio, say no.
+  Say yes.
+
+To decide if a mixio is at least a ratio:
+  Convert the ratio to another mixio.
+  If the mixio is at least the other mixio, say yes.
+  Say no.
+
+To decide if a mixio is at most another mixio:
+  If the mixio is greater than the other mixio, say no.
+  Say yes.
+
+To decide if a mixio is at most a number:
+  Convert the number into another mixio.
+  If the mixio is greater than the other mixio, say no.
+  Say yes.
+
+To decide if a mixio is at most a number trifles:
+  Convert the number / the trifle denominator to another mixio.
+  If the mixio is at most the other mixio, say yes.
+  Say no.
+
+To decide if a mixio is greater than another mixio:
+  Privatize the mixio.
+  Privatize the other mixio.
+  Normalize the mixio.
+  Normalize the other mixio.
+  If the mixio's whole number is greater than the other mixio's whole number, say yes.
+  If the mixio's whole number is less    than the other mixio's whole number, say no.
+  If the mixio's nips are greater than the other mixio's nips, say yes.
+  If the mixio's nips are less    than the other mixio's nips, say no.
+  If the mixio's trifles are greater than the other mixio's trifles, say yes.
+  Say no.
+
+To decide if a mixio is greater than a number trifles:
+  Convert the number / the trifle denominator to another mixio.
+  If the mixio is greater than the other mixio, say yes.
+  Say no.
+
+To decide if a mixio is less than another mixio:
+  Privatize the mixio.
+  Privatize the other mixio.
+  Normalize the mixio.
+  Normalize the other mixio.
+  If the mixio's whole number is less than    the other mixio's whole number, say yes.
+  If the mixio's whole number is greater than the other mixio's whole number, say no.
+  If the mixio's nips are less    than the other mixio's nips, say yes.
+  If the mixio's nips are greater than the other mixio's nips, say no.
+  If the mixio's trifles are less than the other mixio's trifles, say yes.
+  Say no.
+
+To decide if a mixio is less than a number trifles:
+  Convert the number / the trifle denominator to another mixio.
+  If the mixio is less than the other mixio, say yes.
+  Say no.
+
+To decide if a mixio is modest given a number:
+  Privatize the mixio.
+  Normalize the mixio.
+  If the mixio's whole number is at least the number,
+    Say no.
+  If the mixio's whole number is positive, say yes.
+  Negate the mixio's whole number.
+  If the mixio's whole number is more than the number,
+    Say no.
+  If the mixio is the number, say no.
+  Say yes.
+
+To decide if a mixio is negative:
+  Convert 0 to another mixio.
+  If the mixio is less than the other mixio, say yes.
+  Say no.
+
+To decide if a mixio is a number:
+  Privatize the mixio.
+  Normalize the mixio.
+  If the mixio's whole number is not the number, say no.
+  If the mixio's nips are not 0, say no.
+  If the mixio's trifles are not 0, say no.
+  Say yes.
+
+To decide if a mixio is properly non-negative:
+  Privatize the mixio.
+  Normalize the mixio.
+  If the mixio's whole number is not 0, say no.
+  Say yes.
+
+To decide if a number is another number and a mixio is zero:
+  If the number is not the other number, say no.
+  If the mixio is not 0, say no.
+  Say yes.
+
+To decide if a number is at least another number and a mixio is zero:
+  If the number is less than the other number, say no.
+  If the mixio is not 0, say no.
+  Say yes.
+
+To decide if a number is wrapped given a number called alpha and a number called omega:
+ Privatize the alpha.
+ Privatize the omega.
+ If the alpha is more than the omega,
+   Swap the alpha with the omega.
+ If the number is less than the alpha, say no.
+ If the number is more than the omega, say no.
+ Say yes.
+
+To decide if raising a mixio to a number is futile:
+  If the number is at most 1, say no.
+  If the mixio is negative, say no.
+  If the mixio is at least 1, say no.
+  If the mixio is greater than 715803289 trifles, say no.
+  If the mixio is 0, say yes.
+  If the mixio is at most     30547 trifles, say yes.
+  If the number is 2, say no.
+  If the mixio is at most   1203099 trifles, say yes.
+  If the number is 3, say no.
+  If the mixio is at most   7550368 trifles, say yes.
+  If the number is 4, say no.
+  If the mixio is at most  22728354 trifles, say yes.
+  If the number is 5, say no.
+  If the mixio is at most  47384311 trifles, say yes.
+  If the number is 6, say no.
+  If the mixio is at most  80082805 trifles, say yes.
+  If the number is 7, say no.
+  If the mixio is at most 118704670 trifles, say yes.
+  If the number is 8, say no.
+  If the mixio is at most 161217512 trifles, say yes.
+  If the number is 9, say no.
+  If the mixio is at most 205952820 trifles, say yes.
+  If the number is 10, say no.
+  If the mixio is at most 251643608 trifles, say yes.
+  If the number is 11, say no.
+  If the mixio is at most 297372659 trifles, say yes.
+  If the number is 12, say no.
+  If the mixio is at most 342499541 trifles, say yes.
+  If the number is 13, say no.
+  If the mixio is at most 386592467 trifles, say yes.
+  If the number is 14, say no.
+  If the mixio is at most 429372600 trifles, say yes.
+  If the number is 15, say no.
+  If the mixio is at most 470671227 trifles, say yes.
+  If the number is 16, say no.
+  If the mixio is at most 510397828 trifles, say yes.
+  If the number is 17, say no.
+  If the mixio is at most 548516701 trifles, say yes.
+  If the number is 18, say no.
+  If the mixio is at most 585030020 trifles, say yes.
+  If the number is 19, say no.
+  If the mixio is at most 619965638 trifles, say yes.
+  If the number is 20, say no.
+  If the mixio is at most 653368344 trifles, say yes.
+  If the number is 21, say no.
+  If the mixio is at most 685293635 trifles, say yes.
+  If the number is 22, say no.
+  If the mixio is at most 715803289 trifles, say yes.
+  Say no.
+
+To decide if raising a mixio to a number is trifling:
+  If the number is at most 1, say no.
+  If the mixio is negative, say no.
+  If the mixio is at least 1, say no.
+  If the mixio is greater than 750823906 trifles, say no.
+  If the mixio is 0, say yes.
+  If the mixio is at most     52908 trifles, say yes.
+  If the number is 2, say no.
+  If the mixio is at most   1735170 trifles, say yes.
+  If the number is 3, say no.
+  If the mixio is at most   9936843 trifles, say yes.
+  If the number is 4, say no.
+  If the mixio is at most  28313414 trifles, say yes.
+  If the number is 5, say no.
+  If the mixio is at most  56905571 trifles, say yes.
+  If the number is 6, say no.
+  If the mixio is at most  93691342 trifles, say yes.
+  If the number is 7, say no.
+  If the mixio is at most 136178317 trifles, say yes.
+  If the number is 8, say no.
+  If the mixio is at most 182148537 trifles, say yes.
+  If the number is 9, say no.
+  If the mixio is at most 229868716 trifles, say yes.
+  If the number is 10, say no.
+  If the mixio is at most 278074114 trifles, say yes.
+  If the number is 11, say no.
+  If the mixio is at most 325882576 trifles, say yes.
+  If the number is 12, say no.
+  If the mixio is at most 372701919 trifles, say yes.
+  If the number is 13, say no.
+  If the mixio is at most 418151324 trifles, say yes.
+  If the number is 14, say no.
+  If the mixio is at most 462000463 trifles, say yes.
+  If the number is 15, say no.
+  If the mixio is at most 504124412 trifles, say yes.
+  If the number is 16, say no.
+  If the mixio is at most 544471026 trifles, say yes.
+  If the number is 17, say no.
+  If the mixio is at most 583037638 trifles, say yes.
+  If the number is 18, say no.
+  If the mixio is at most 619854555 trifles, say yes.
+  If the number is 19, say no.
+  If the mixio is at most 654973429 trifles, say yes.
+  If the number is 20, say no.
+  If the mixio is at most 688459106 trifles, say yes.
+  If the number is 21, say no.
+  If the mixio is at most 720383950 trifles, say yes.
+  If the number is 22, say no.
+  If the mixio is at most 750823906 trifles, say yes.
+  Say no.
+
+To decide if square root nips are close given a mixio and a mixio called result:
+  Privatize the result.
+  Add 1 to the result's nips.
+  Multiply the result by the result returning a mixio called bigger product.
+  If the bigger product is less than the mixio, say no.
+  Subtract 2 from the result's nips.
+  Multiply the result by the result returning a mixio called smaller product.
+  If the smaller product is greater than the mixio, say no.
+  Say yes.
+
+To decide if square root trifles are close given a mixio and a mixio called result:
+  Privatize the result.
+  Add 1 to the result's trifles.
+  Multiply the result by the result returning a mixio called bigger product.
+  If the bigger product is less than the mixio, say no.
+  Subtract 2 from the result's trifles.
+  Multiply the result by the result returning a mixio called smaller product.
+  If the smaller product is greater than the mixio, say no.
+  Say yes.
+
+To decide if square root trifles should be decreased given a mixio and a mixio called result:
+  Privatize the result.
+  Subtract 1 from the result's trifles.
+  If square root trifles should be increased given the mixio and the result,
+    Say no.
+  Say yes.
+
+To decide if square root trifles should be increased given a mixio and a mixio called result:
+  Privatize the result.
+  Multiply the result by the result returning a mixio called product.
+  If the product is at least the mixio, say no.
+  Subtract the product from the mixio returning a mixio called shortage.
+  Add 1 to the result's trifles.
+  Multiply the result by the result returning the product.
+  If the product is at most the mixio, say yes.
+  Subtract the mixio from the product returning a mixio called complement.
+  If the shortage is less than the complement, say no.
+  Say yes.
+
+To decide if a tangent is extreme:
+  Privatize the tangent.
+  De-sign the tangent.
+  If the tangent's denominator is 0, say yes.
+  If the tangent's denominator is greater than 1, say no.
+  If the tangent's numerator is the largest number, say yes.
+  Say no.
+
+To decide if a trig angle is another trig angle:
+  If the trig angle's degrees are not the other trig angle's degrees, say no.
+  If the trig angle's minutes are not the other trig angle's minutes, say no.
+  If the trig angle's seconds are not the other trig angle's seconds, say no.
+  If the trig angle's hundredths are not the other trig angle's hundredths, say no.
+  Say yes.
+
+To decide if a trig angle is just degrees:
+  If the trig angle's minutes are not 0, say no.
+  If the trig angle's seconds are not 0, say no.
+  If the trig angle's hundredths are not 0, say no.
+  Say yes.
+
+To decide if a trig angle is just degrees and minutes:
+  If the trig angle's seconds are not 0, say no.
+  If the trig angle's hundredths are not 0, say no.
+  Say yes.
+
+To divide a mixio by another mixio:
+  Divide the mixio by the other mixio returning a mixio called result.
+  Put the result in the mixio.
+
+To divide a mixio by a divisor mixio returning a quotient number and a remnant mixio:
+  If the divisor is 0,
+    Put the largest number in the quotient;
+    Convert 0 into the remnant;
+    Exit.
+  Privatize the mixio.
+  Privatize the divisor.
+  Put the mixio in the remnant.
+  Normalize the remnant.
+  Put the divisor in another mixio.
+  Normalize the other mixio.
+  If the mixio is negative,
+    Set a sign flag;
+    Negate the mixio.
+  If the divisor is negative,
+    Reverse the sign flag;
+    Negate the divisor.
+  Normalize the mixio.
+  Normalize the divisor.
+  If the mixio is less than the divisor,
+    Put 0 in the quotient; break.
+  If the mixio is the divisor,
+    Put 1 in the quotient; break.
+  If the divisor's whole number is not 0,
+    Divide the mixio's whole number by the divisor's whole number
+      Giving the quotient and a remainder;
+    Break.
+  \ to get here, the divisor's whole number is 0.
+  Multiply the divisor by the trifle root.
+  Put 1 in a count.
+  If the divisor's whole number is 0,
+    Multiply the divisor by the trifle root;
+    Add 1 to the count.
+  If the mixio's whole number is at least the trifle root,
+    Divide the mixio's whole number by the divisor's whole number
+      Giving the quotient and the remainder;
+    Break.
+  Multiply the mixio's whole number by the trifle root.
+  Subtract 1 from the count.
+  If the mixio's whole number is at least the trifle root,
+    Divide the mixio's whole number by the divisor's whole number
+      Giving the quotient and the remainder;
+    Break.
+  Multiply the mixio's whole number by the trifle root.
+  Subtract 1 from the count.
+  Divide the mixio's whole number by the divisor's whole number
+    Giving the quotient and the remainder.
+  Break.
+  Repeat. \ a go-to label.
+  If the count is 2,
+    Multiply the quotient by the trifle root;
+    Multiply the quotient by the trifle root;
+    Put 0 in the count.
+  If the count is 1,
+    Multiply the quotient by the trifle root;
+    Put 0 in the count.
+  If the sign flag is set,
+    Negate the quotient.
+  Multiply the other mixio by the quotient.
+  Normalize the other mixio.
+  Subtract the other mixio from the remnant.
+  Normalize the remnant.
+
+To divide a mixio by a mixio called divisor given a sign flag returning a result mixio (proper fractions):
+  \ assumes that both the mixio and the divisor are non-negative.
+  \ assumes that both the mixio and the divisor are less than 1.
+  If the divisor is 0,
+    Convert the largest number into the result; exit.
+  Privatize the mixio.
+  Privatize the divisor.
+  Normalize the mixio.
+  Normalize the divisor.
+  Put the mixio's nips in a numerator number.
+  Put the divisor's nips in a denominator number.
+  Multiply the numerator by the trifle root.
+  Multiply the denominator by the trifle root.
+  Add the mixio's trifles to the numerator.
+  Add the divisor's trifles to the denominator.
+  Divide the numerator by the denominator
+    Giving the result's whole number and a remainder.
+  Put the remainder in the result's nips.
+  Multiply the remainder by the trifle root.
+  Scale the result's nips by the trifle root / the denominator.
+  Put the result's nips in a nips number.
+  Multiply the nips by the denominator.
+  Subtract the nips from the remainder.
+  If the remainder is negative,
+    Subtract 1 from the result's nips;
+    Add the denominator to the remainder.
+  Put the remainder in the result's trifles.
+  Scale the result's trifles by the trifle root / the denominator.
+  If the sign flag is set, negate the result.
+
+To divide a mixio by a mixio called divisor returning a number called quotient and a mixio called remnant (loop):
+  Privatize the mixio.
+  Put 0 in the quotient.
+  Get modesty threshold given the divisor returning a number called threshold.
+  Loop.
+    Divide the mixio by the divisor
+      Returning a number and the remnant.
+    Add the number to the quotient.
+    If the remnant is modest given the threshold, exit.
+    Put the remnant in the mixio.
+  Repeat.
+
+To divide a mixio by a mixio called divisor returning a result mixio:
+  Privatize the mixio.
+  Privatize the divisor.
+  Convert 0 into the result.
+  Normalize the mixio.
+  Normalize the result.
+  If the divisor is 0,
+    Convert the largest number into the result; exit.
+  If the mixio is negative,
+    Set a sign flag;
+    Negate the mixio;
+    Normalize the mixio.
+  If the divisor is negative,
+    Reverse the sign flag;
+    Negate the divisor;
+    Normalize the divisor.
+  If the mixio and the divisor are both non-negative proper fractions,
+    Divide the mixio by the divisor given the sign flag
+      Returning the result (proper fractions);
+    Exit.
+  Put the mixio in a mixio called temp.
+  Divide the temp by the trifle root.
+  Divide the temp by the divisor
+    Returning a number and a mixio called remainder mixio (loop).
+  Multiply the number by the trifle root.
+  Put the divisor in the temp.
+  Multiply the temp by the number.
+  Subtract the temp from the mixio.
+  Put the number in the result's whole number.
+  Divide the mixio by the divisor
+    Returning the number and the remainder mixio (loop).
+  Add the number to the result's whole number.
+  Put the remainder mixio in the mixio.
+  Multiply the mixio by the trifle root.
+  Divide the mixio by the divisor
+    Returning the number and the remainder mixio (loop).
+  Put the number in the result's nips.
+  Put the remainder mixio in the mixio.
+  Multiply the mixio by the trifle root.
+  Divide the mixio by the divisor
+    Returning the number and the remainder mixio (loop).
+  Put the number in the result's trifles.
+  Put the remainder mixio in the mixio.
+  Multiply the mixio by the trifle root.
+  Divide the mixio by the divisor
+    Returning the number and the remainder mixio (loop).
+  Divide the number by the trifle root
+    Giving a quotient and a remainder.
+  Add the quotient to the result's trifles.
+  Put the remainder in the number.
+  Put the trifle root in a number called threshold.
+  Divide the threshold by 2.
+  If the number is at least the threshold,
+    Add 1 to the result's trifles.
+  If the number is less than the threshold,
+    Subtract the trifle root from the threshold.
+  If the sign flag is set,
+    Negate the result.
+  Normalize the result.
+
+To divide a mixio by a number:
+  Divide the mixio by the number returning another mixio.
+  Put the other mixio in the mixio.
+
+To divide a mixio by a number returning another mixio:
+  If the number is 0,
+    Convert the largest number into the mixio; exit.
+  Put the number in another number.
+  De-sign the other number.
+  If the other number is at most the trifle root,
+    Divide the mixio by the number
+      Returning the other mixio (modest divisor);
+    Exit.
+  Get a gcd given the number and the trifle root.
+  If the gcd is at most 1,
+    Divide the mixio by the number
+      Returning the other mixio (large divisor);
+    Exit.
+  Divide the mixio by the gcd
+    Returning a mixio called temp (modest divisor).
+  Put the number in a number called remnant.
+  Divide the remnant by the gcd.
+  Divide the temp by the remnant returning the other mixio.
+
+To divide a mixio by a number returning another mixio (large divisor):
+  If the number is 0,
+    Convert the largest number into the mixio; exit.
+  Privatize the mixio.
+  Normalize the mixio.
+  Divide the mixio's whole number by the number
+    Giving a quotient and a remainder.
+  Put the quotient in the other mixio's whole number.
+  Put the remainder in another number.
+  Multiply the other number by the trifle root / the number.
+  Put the other number in the other mixio's nips.
+  \ the other mixio's nips have been rounded to the nearest nip.
+  Normalize the other mixio.
+  Divide the mixio's nips by the number
+    Giving the quotient and the remainder.
+  Add the quotient to the other mixio's nips.
+  Put the remainder in the other number.
+  Multiply the other number by the trifle root / the number.
+  Put the other number in the other mixio's trifles.
+  Normalize the other mixio.
+  Divide the mixio's trifles by the number
+    Giving the quotient and the remainder.
+  Add the quotient to the other mixio's trifles.
+  Put the remainder in the other number.
+  Multiply the other number by the trifle root / the number.
+  Divide the other number by the trifle root
+    Giving the quotient and the remainder.
+  Add the quotient to the other mixio's trifles.
+  Put the trifle root in a number called threshold.
+  Divide the threshold by 2.
+  If the other number is at least the threshold,
+    Add 1 to the other mixio's trifles.
+  Subtract the trifle root from the threshold.
+  If the other number is less than the threshold,
+    Subtract 1 from the other mixio's trifles.
+  Normalize the other mixio.
+
+To divide a mixio by a number returning another mixio (modest divisor):
+  If the number is 0,
+    Convert the largest number into the mixio; exit.
+  Privatize the mixio.
+  Normalize the mixio.
+  Divide the mixio's whole number by the number
+    Giving a quotient and a remainder.
+  Put the quotient in the other mixio's whole number.
+  Put the remainder in another number.
+  Multiply the other number by the trifle root.
+  Add the mixio's nips to the other number.
+  Divide the other number by the number
+    Giving the quotient and the remainder.
+  Put the quotient in the other mixio's nips.
+  Put the remainder in the other number.
+  Multiply the other number by the trifle root.
+  Add the mixio's trifles to the other number.
+  Divide the other number by the number
+    Giving the quotient and the remainder.
+  Put the quotient in the other mixio's trifles.
+  Put the remainder in the other number.
+  Multiply the other number by the trifle root.
+  Divide the other number by the number
+    Giving the quotient and the remainder.
+  Put the quotient in the other number.
+  Put the trifle root in a number called threshold.
+  Divide the threshold by 2.
+  If the other number is at least the threshold,
+    Add 1 to the other mixio's trifles.
+  Subtract the trifle root from the threshold.
+  If the other number is less than the threshold,
+    Subtract 1 from the other mixio's trifles.
+  Normalize the other mixio.
+
+The first cached mixio is a mixio.
+The second cached mixio is a mixio.
+The third cached mixio is a mixio.
+The fourth cached mixio is a mixio.
+The fifth cached mixio is a mixio.
+The sixth cached mixio is a mixio.
+The seventh cached mixio is a mixio.
+The eighth cached mixio is a mixio.
+The sixteenth cached mixio is a mixio.
+
+A fuzzy test has 
+  A string called context, 
+  A string called test name,
+  Some bits,   
+  A bullseye bigint,
+  A tolerance bigint,
+  A timer, and
+  A binary logarithm at the bits.
+\ The bullseye bigint is often interpreted as a premix,
+\ which is equivalent to a mixio.  The implied denominator
+\ of a premix is 43,200 * 43,200, which makes
+\ the corresponding tolerance be in trifles.
+
+To get a cached mixio given a number:
+  If the number is 1, put the first cached mixio in the cached mixio; exit.
+  If the number is 2, put the second cached mixio in the cached mixio; exit.
+  If the number is 3, put the third cached mixio in the cached mixio; exit.
+  If the number is 4, put the fourth cached mixio in the cached mixio; exit.
+  If the number is 5, put the fifth cached mixio in the cached mixio; exit.
+  If the number is 6, put the sixth cached mixio in the cached mixio; exit.
+  If the number is 7, put the seventh cached mixio in the cached mixio; exit.
+  If the number is 8, put the eighth cached mixio in the cached mixio; exit.
+  If the number is 16, put the sixteenth cached mixio in the cached mixio; exit.
+
+To get modesty threshold given a mixio called divisor returning a number:
+  Put the divisor's whole number in the number.
+  De-sign the number.
+  If the number is less than the trifle root,
+    Put the trifle root in the number.
+
+To get a number given a count (arctangent coefficient numerator):
+  \ Per Herbert Medina's 2006 paper on
+  \ "A Sequence of Polynomials for Approximating Arctangent"
+  \ https://web.archive.org/web/20060902190838/http://myweb.lmu.edu/hmedina/Papers/Arctan.pdf
+  \ The count is the term's power.
+  \ The denominators are 64 times each term's power.
+  Put 0 in the number.
+  If the count is at most 0, exit.
+  If the count is at least 24, exit.
+  If the count is  1, put  64 in the number; exit.
+  If the count is  2, exit.
+  If the count is  3, put  -64 in the number; exit.
+  If the count is  5, put   64 in the number; exit.
+  If the count is  7, put  -64 in the number; exit.
+  If the count is  9, put   64 in the number; exit.
+  If the count is 11, put  -64 in the number; exit.
+  If the count is at most  12, exit.
+  If the count is 13, put   65 in the number; exit.
+  If the count is 14, put  -12 in the number; exit.
+  If the count is 15, put    1 in the number; exit.
+  If the count is 16, put -208 in the number; exit.
+  If the count is 17, put  494 in the number; exit.
+  If the count is 18, put -584 in the number; exit.
+  If the count is 19, put  430 in the number; exit.
+  If the count is 20, put -208 in the number; exit.
+  If the count is 21, put   65 in the number; exit.
+  If the count is 22, put  -12 in the number; exit.
+  If the count is 23, put    1 in the number.
+
+To get some radians given a cosine:
+  Put the cosine in a ratio.
+  Put the ratio in a sine.
+  Get the radians given the sine.
+  Negate the radians.
+  Put half pi in some other radians.
+  Add the other radians to the radians.
+  Normalize the radians.
+
+To get some radians given a mixio (in degrees):
+  Put tau in some tau radians.
+  Divide the mixio by 6.
+  Multiply the mixio by the tau radians.
+  Divide the mixio by 60.
+  Put the mixio in the radians.
+
+To get some radians given a ratio (in degrees):
+  Convert the ratio to a mixio.
+  Get the radians given the mixio (in degrees).
+
+To get some radians given a sine:
+  Privatize the sine.
+  If the sine is negative,
+    Set a sign flag;
+    Negate the sine.
+  If the sine is not positive,
+    Convert 0 to the radians; exit.
+  \ Use Newton's method, in a region where sin(angle)
+  \ is monotonically increasing and concave downward.  Thus,
+  \ the point (low radians, low sine) never moves from (0, 0),
+  \ and the point (high radians, high sine) is the guess.
+  Convert the sine to a mixio called goal mixio.
+  Put half pi in some radians called guess radians.
+  Convert 1 into a guess mixio.
+  Loop.
+    If the goal mixio is at least the guess mixio,
+      Convert the guess radians to the radians;
+      Negate the radians given the sign flag;
+      Normalize the radians;
+      Exit.
+    Divide the guess radians by the guess mixio
+      Returning a mixio called next factor.
+    Put the guess radians in some radians called previous radians.
+    Multiply the goal mixio by the next factor
+      Returning the guess radians.
+    Put the guess radians' sine in another sine.
+    Convert the other sine to a mixio.
+    If the mixio is the guess mixio,
+      Convert the guess radians to the radians;
+      Negate the radians given the sign flag;
+      Normalize the radians;
+      Exit.
+    If the mixio is less than the goal mixio,
+      Strictly interpolate the radians from the goal mixio
+        Between the previous radians and the guess radians
+        From between the guess mixio and the mixio;
+      Normalize the radians;
+      Exit.
+    Put the mixio in the guess mixio.
+  Repeat.
+  Normalize the radians.
+
+To get some radians given a tangent:
+  Put half pi in some radians called bogus radians.
+  If the tangent is extreme,
+    Put the bogus radians in the radians; exit.
+  Privatize the tangent.
+  If the tangent is negative,
+    Set a sign flag;
+    Negate the tangent.
+  If the tangent is not positive,
+    Convert 0 to the radians; exit.
+  If the tangent is greater than 1 / 1,
+    Set an invert flag;
+    Flip the tangent.
+  Convert 0/1 to a mixio.
+  Clear a count.
+  Loop.
+    Add 1 to the count.
+    If the count is at least 24, break.
+    Get a number given the count (arctangent coefficient numerator).
+    Convert the tangent to another mixio.
+    Raise the other mixio to the count.
+    Convert the number / the count to a third mixio.
+    Multiply the other mixio by the third mixio.
+    Add the other mixio to the mixio.
+  Repeat.
+  Divide the mixio by 64.
+  Put the mixio in the radians.
+  If the invert flag is set,
+    Negate the radians;
+    Add the bogus radians to the radians.
+  If the sign flag is set,
+    Negate the radians.
+  Normalize the radians.
+
+To get square root nips given a mixio and a mixio called result:
+  \ assumes that the result is already within 1 of correct answer.
+  If the mixio's whole number is the largest number,
+    Put 41040 in the result's nips; exit.
+  Loop.
+    If square root nips are close given the mixio and the result,
+      Exit.
+    Refine square root nips given the mixio and the result.
+  Repeat.
+
+To get square root trifles given a mixio and a mixio called result:
+  If the mixio's whole number is the largest number,
+    Put 1007 in the result's trifles;
+    Put the mixio's nips in a number called bonus nips;
+    Divide the bonus nips by 2;
+    Scale the bonus nips by the trifle root / the largest square root;
+    Add the bonus nips to the result's trifles;
+    Exit.
+  \ assumes that the result is already within 2 nips of correct answer.
+  Loop.
+    If square root trifles are close given the mixio and the result,
+      Exit.
+    Refine square root trifles given the mixio and the result.
+  Repeat.
+
+To get tau returning some radians:
+  Put tau in the radians.
+
+To get a trig angle given a cosine:
+  Get some radians given the cosine.
+  Convert the radians to the trig angle.
+
+To get a trig angle given a sine:
+  Get some radians given the sine.
+  Convert the radians to the trig angle.
+
+To get a trig angle given a tangent:
+  Get some radians given the tangent.
+  Convert the radians to the trig angle.
+
+To invert a mixio:
+  Put the mixio in another mixio.
+  Convert 1/1 to the mixio.
+  Divide the mixio by the other mixio.
+
+To make a mixio given a number and a number called nips and some trifles:
+  Put the number in the mixio's whole number.
+  Put the nips in the mixio's nips.
+  Put the trifles in the mixio's trifles.
+
+To make a trig angle given a number called degrees:
+  Make the trig angle with the degrees and 0 and 0 and 0.
+
+To make a trig angle given a number called degrees and a number called minutes and a number called seconds and a number called hundredths:
+  Put the degrees in the trig angle's degrees.
+  Put the minutes in the trig angle's minutes.
+  Put the seconds in the trig angle's seconds.
+  Put the hundredths in the trig angle's hundredths.
+
+A mixio has
+  A whole number,
+  A number called nips, and  \ implied denominator = trifle root
+  Some trifles.              \ implied denominator = trifle denominator
+
+To multiply a mixio by another mixio:
+  Multiply the mixio by the other mixio returning a mixio called result.
+  Put the result in the mixio.
+
+To multiply a mixio by another mixio returning a mixio called result:
+  Privatize the mixio.
+  Privatize the other mixio.
+  Normalize the mixio.
+  Normalize the other mixio.
+  Put the other mixio in the result.
+  Multiply the result by the mixio's whole number.
+  Normalize the result.
+  Put the other mixio in a mixio called nippy.
+  Put the nippy's nips in the nippy's trifles.
+  Divide the nippy's whole number by the trifle root
+    Giving a quotient and a remainder.
+  Put the quotient in the nippy's whole number.
+  Put the remainder in the nippy's nips.
+  Multiply the nippy by the mixio's nips.
+  Normalize the nippy.
+  Add the nippy to the result.
+  Make a mixio called trifly with 0 and 0 and the other mixio's whole number.
+  Normalize the trifly.
+  Multiply the trifly by the mixio's trifles.
+  Add the trifly to the result.
+  Make a mixio called scrappy
+    Given 0 and the mixio's nips and the mixio's trifles.
+  Multiply the scrappy by the other mixio's trifles.
+  Normalize the scrappy.
+  Put the mixio's trifles in a number.
+  Multiply the number by the other mixio's nips.
+  Add the number to the scrappy's nips.
+  Normalize the scrappy.
+  Divide the scrappy by the trifle root.
+  Divide the scrappy by the trifle root.
+  Add the scrappy to the result.
+  Normalize the result.
+
+To multiply a mixio by a number:
+  Multiply the mixio by the number returning a mixio called result.
+  Put the result in the mixio.
+
+To multiply a mixio by a number returning another mixio:
+  Privatize the mixio.
+  Normalize the mixio.
+  Multiply the mixio's whole number by the number.
+  Divide the number by the trifle root
+    Giving a quotient and a remainder.
+  Put the mixio's nips in a number called nips.
+  Multiply the nips by the quotient.
+  Add the nips to the mixio's whole number.
+  Multiply the mixio's nips by the remainder.
+  Put the mixio's trifles in a number called trifles.
+  Multiply the trifles by the quotient.
+  Add the trifles to the mixio's nips.
+  Multiply the mixio's trifles by the remainder.
+  Normalize the mixio.
+  Put the mixio in the other mixio.
+
+To multiply a trig angle by a number:
+  Multiply the trig angle's degrees by the number.
+  Multiply the trig angle's minutes by the number.
+  Multiply the trig angle's seconds by the number.
+  Multiply the trig angle's hundredths by the number.
+  Normalize the trig angle.
+
+To negate a mixio:
+  Normalize the mixio.
+  Negate the mixio's whole number.
+  Negate the mixio's nips.
+  Negate the mixio's trifles.
+  Normalize the mixio.
+
+To negate a mixio given a flag:
+  If the flag is set, negate the mixio.
+
+To negate a ratio given a flag:
+  If the flag is set, negate the ratio.
+
+To normalize a mixio:
+  Put the trifle root in a number.
+  Subtract 1 from the number.
+  Wrap the mixio's trifles
+    Given 0 and the number and the mixio's nips.
+  Wrap the mixio's nips
+    Given 0 and the number and the mixio's whole number.
+
+To normalize some radians:
+  If the radians are negative, 
+    Normalize the radians (negative); exit.
+  Normalize the radians (positive).
+
+To normalize some radians (negative):
+  Negate the radians.
+  Normalize the radians (positive).
+  Negate the radians.
+  If the radians are not negative, exit.
+  Add tau to the radians.
+
+To normalize some radians (positive):
+  Put tau into some radians called tau radians.
+  Loop.
+    If the radians are less than the tau radians, 
+      Exit.
+    If the radians's whole number is 6,
+      Subtract the tau radians from the radians;
+      Exit.
+    Divide the radians's whole number by 7 giving a quotient and a remainder.
+    Multiply the quotient by 7 returning a number.
+    Multiply the tau radians by the quotient returning some other radians.
+    Subtract the other radians from the radians.
+  Repeat.
+
+To normalize a trig angle:
+  Wrap the trig angle's degrees    given 0 and 359.
+  Wrap the trig angle's minutes    given 0 and  59 and the trig angle's degrees.
+  Wrap the trig angle's seconds    given 0 and  59 and the trig angle's minutes.
+  Wrap the trig angle's hundredths given 0 and  99 and the trig angle's seconds.
+  Wrap the trig angle's seconds    given 0 and  59 and the trig angle's minutes.
+  Wrap the trig angle's minutes    given 0 and  59 and the trig angle's degrees.
+  Wrap the trig angle's degrees    given 0 and 359.
+
+To put half pi into some radians:
+  Put tau into the radians.
+  Divide the radians by 4.
+
+To put a mixio in another mixio:
+  Put the mixio's whole number in the other mixio's whole number.
+  Put the mixio's nips in the other mixio's nips.
+  Put the mixio's trifles in the other mixio's trifles.
+
+To put a mixio's square root into a result mixio:
+  \ Finds magnitude of the square root.
+  Privatize the mixio.
+  Convert 0 into the result.
+  If the mixio is 0, exit.
+  If the mixio is negative,
+    Negate the mixio.  \ similar to cal-4700's behavior.
+  If the mixio is 1,
+    Convert 1 into the result; exit.
+  Normalize the mixio.
+  Put the square root of the mixio's whole number in the result's whole number.
+  Put the result's whole number times the result's whole number in a number.
+  If the mixio is the number, exit.
+  Get square root nips given the mixio and the result.
+  Get square root trifles given the mixio and the result.
+  If square root trifles should be increased given the mixio and the result,
+    Add 1 to the result's trifles;
+    Normalize the result;
+    Exit.
+  If square root trifles should be decreased given the mixio and the result,
+    Subtract 1 from the result's trifles.
+  Normalize the result.
+
+To put pi into some radians:
+  Put tau into the radians.
+  Divide the radians by 2.
+
+To put some radians' cosine into a cosine:
+  If the radians are 0,
+    Put 1 in the cosine; exit.
+  Privatize the radians.
+  Normalize the radians.
+  Put tau into some radians called tau.
+  Put pi into some radians called pi.
+  If the radians are greater than the pi,
+    Subtract the tau from the radians;
+    Negate the radians.
+  Put half pi into some radians called half pi.
+  If the radians are greater than the half pi,
+    Subtract the pi from the radians;
+    Set a sign flag;
+    Negate the radians.
+  If the radians are at least 85 / 108, \ slightly more than pi / 4
+    Subtract the half pi from the radians;
+    Negate the radians;
+    Put the radians' sine into the cosine;
+    Negate the cosine given the sign flag;
+    Exit.
+  Convert 1 into a mixio.
+  Multiply the radians by the radians returning a mixio called square mixio.
+  Put 0 in a count called power.
+  Loop.
+    Add the mixio to a mixio called result.
+    If the power is at least 12, break.
+    Negate the mixio.
+    Multiply the mixio by the square mixio.
+    Add 1 to the power.
+    Put the power in a number.
+    Add 1 to the power.
+    Multiply the number by the power.
+    Divide the mixio by the number.
+  Repeat.
+  Convert the result to the cosine.
+  Negate the cosine given the sign flag.
+
+To put some radians' sine into a sine:
+  If the radians are 0,
+    Put 0 in the sine; exit.
+  Privatize the radians.
+  Normalize the radians.
+  Put tau into some radians called tau.
+  Put pi into some radians called pi.
+  If the radians are greater than the pi,
+    Subtract the tau from the radians;
+    Negate the radians;
+    Set a sign flag.
+  Put half pi into some radians called half pi.
+  If the radians are greater than the half pi,
+    Subtract the pi from the radians;
+    Negate the radians.
+  If the radians are at least 85 / 108, \ slightly more than pi / 4
+    Subtract the half pi from the radians;
+    Negate the radians;
+    Put the radians' cosine into the sine;
+    Negate the sine given the sign flag;
+    Exit.
+  Put the radians in a mixio.
+  Multiply the mixio by the mixio returning a mixio called square mixio.
+  Put 1 in a count called power.
+  Loop.
+    Add the mixio to a mixio called result.
+    If the power is at least 11, break.
+    Negate the mixio.
+    Multiply the mixio by the square mixio.
+    Add 1 to the power.
+    Put the power in a number.
+    Add 1 to the power.
+    Multiply the number by the power.
+    Divide the mixio by the number.
+  Repeat.
+  Convert the result to the sine.
+  Negate the sine given the sign flag.
+
+To put some radians' tangent into a tangent:
+  Privatize the radians.
+  Normalize the radians.
+  Put tau in some radians called up angle.
+  Divide the up angle by 4.
+  Put the up angle in some radians called down angle.
+  Negate the down angle.
+  Normalize the down angle.
+  If the radians are the up angle,
+    Put the largest number / 1 in the tangent; exit.
+  If the radians are the down angle,
+    Put the largest number / 1 in the tangent; exit.
+  Put the radians' sine into a sine.
+  Put the radians' cosine into a cosine.
+  Put the sine's numerator in the tangent's numerator.
+  Multiply the tangent's numerator
+    By the trifle denominator / the sine's denominator.
+  Put the cosine's numerator in the tangent's denominator.
+  Multiply the tangent's denominator
+    By the trifle denominator / the cosine's denominator.
+  Reduce the tangent.
+
+To put tau into some radians:
+  Put 6 into the radians' whole number.
+  Put 12233 into the radians' nips.
+  Put 26148 into the radians' trifles.
+
+To put a trig angle into another trig angle:
+  Put the trig angle's degrees into the other trig angle's degrees.
+  Put the trig angle's minutes into the other trig angle's minutes.
+  Put the trig angle's seconds into the other trig angle's seconds.
+  Put the trig angle's hundredths into the other trig angle's hundredths.
+
+To put a trig angle's cosine into a cosine:
+  Convert the trig angle to some radians.
+  Put the radians' cosine into the cosine.
+
+To put a trig angle's sine into a sine:
+  Convert the trig angle to some radians.
+  Put the radians' sine into the sine.
+
+To put a trig angle's tangent into a tangent:
+  Privatize the trig angle.
+  Normalize the trig angle.
+  Make a trig angle called up angle given 90.
+  Make a trig angle called down angle given 270.
+  If the trig angle is the up angle,
+    Put the largest number / 1 in the tangent; exit.
+  If the trig angle is the down angle,
+    Put the largest number / 1 in the tangent; exit.
+  Put the trig angle's sine into a sine.
+  Put the trig angle's cosine into a cosine.
+  Put the sine's numerator in the tangent's numerator.
+  Multiply the tangent's numerator
+    By the trifle denominator / the sine's denominator.
+  Put the cosine's numerator in the tangent's denominator.
+  Multiply the tangent's denominator
+    By the trifle denominator / the cosine's denominator.
+  Reduce the tangent.
+
+Some radians are a mixio.
+
+To raise a mixio to a number:
+  If the mixio is any number,
+    Normalize the mixio;
+    Raise the mixio's whole number to the number;
+    Exit.
+  If the number is 0,
+    Convert 1/1 to the mixio; exit.
+  If the number is 1, exit.
+  Privatize the number.
+  If the number is negative,
+    Negate the number;
+    Invert the mixio;
+    Raise the mixio to the number;
+    Exit.
+  If the mixio is negative, set a negation flag.
+  If the number is even, clear the negation flag.
+  De-sign the mixio.
+  If the negation flag is set,
+    Raise the mixio to the number;
+    Negate the mixio;
+    Exit.
+  If raising the mixio to the number is futile,
+    Convert 0/1 to the mixio; exit.
+  If raising the mixio to the number is trifling,
+    Convert 1 / the trifle denominator to the mixio; exit.
+  Cache mixios given the mixio and the number.
+  Convert 1/1 to a result mixio.
+  Loop.
+    If the number is less than 16, break.
+    Subtract 16 from the number.
+    Multiply the result mixio by the sixteenth cached mixio.
+  Repeat.
+  If the number is at least 8,
+    Subtract 8 from the number;
+    Multiply the result mixio by the eighth cached mixio.
+  If the number is positive,
+    Get a cached mixio given the number;
+    Multiply the result mixio by the cached mixio.
+  Put the result mixio in the mixio.
+  If the original number is at least 24, exit.
+  If the mixio is less than 2 trifles,
+    Convert 2 / the trifle denominator in the mixio.
+
+To refine square root nips given a mixio and a mixio called result:
+  \ assumes that the result is already within 1 of correct answer.
+  If the result's whole number is 0,
+    Put the mixio's nips in a number;
+    Multiply the number by the trifle root;
+    Add the mixio's trifles to the number;
+    Put the square root of the number in the result's nips;
+    Exit.
+  Privatize the mixio.
+  Multiply the result by the result returning a mixio called product.
+  Subtract the product from the mixio.
+  Divide the mixio by 2.
+  Put the result's whole number in the number.
+  Multiply the number by the trifle root.
+  Add the result's nips to the number.
+  Multiply the mixio by the trifle root.
+  Divide the mixio by the number.
+  Add the mixio to the result.
+
+To refine square root trifles given a mixio and a mixio called result:
+  \ assumes that the result is already within 2 nips of correct answer.
+  If the result's whole number is 0, exit.
+  Privatize the mixio.
+  Multiply the result by the result returning a mixio called product.
+  Subtract the product from the mixio.
+  Divide the mixio by 2.
+  Divide the mixio by the result.
+  Add the mixio to the result.
+
+A sine is a ratio.
+
+To stash a fuzzy test given a ratio:
+  Convert the ratio to a mixio.
+  Stash the fuzzy test given the mixio.
+
+To stash a test result using a trig angle:
+  Convert the trig angle to a string.
+  Stash the test result using the string.
+
+To strictly interpolate some radians called goal radians from a mixio called goal mixio between some radians and some other radians from between a mixio and another mixio:
+  Put the other radians in some radians called delta radians.
+  Subtract the radians from the delta radians.
+  Put the other mixio in a mixio called delta mixio.
+  Subtract the mixio from the delta mixio.
+  Put the goal mixio in a mixio called partial mixio.
+  Subtract the mixio from the partial mixio.
+  Divide the partial mixio by the delta mixio.
+  If the partial mixio is at most 0,
+    Put the radians in the goal radians; exit.
+  If the partial mixio is at least 1,
+    Put the other radians in the goal radians; exit.
+  Multiply the delta radians by the partial mixio.
+  Put the radians in the goal radians.
+  Add the delta radians to the goal radians.
+
+To subtract a mixio from another mixio:
+  Privatize the mixio.
+  Normalize the mixio.
+  Normalize the other mixio.
+  Convert the mixio to a string (long).
+  Convert the other mixio to another string (long).
+  Subtract the mixio's whole number from the other mixio's whole number.
+  Subtract the mixio's nips from the other mixio's nips.
+  Subtract the mixio's trifles from the other mixio's trifles.
+  Convert the other mixio to the other string (long).
+  Normalize the other mixio.
+
+To subtract a mixio from another mixio returning a mixio called result:
+  Privatize the mixio.
+  Negate the mixio.
+  Add the mixio to the other mixio returning the result.
+
+To subtract some trifles from a mixio:
+  Subtract the trifles from the mixio's trifles.
+  Normalize the mixio.
+
+A tangent is a ratio.
+
+To test (mixio square root of 0):
+  Create a test result about "trig"
+    And "mixio square root of 0" and expecting "0".
+  Convert 0 into a mixio.
+  Put the mixio's square root in another mixio.
+  Convert the other mixio to a string called actual.
+  Stash the test result given the actual.
+
+To test (mixio square root of 1):
+  Create a test result about "trig"
+    And "mixio square root of 1" and expecting "1".
+  Convert 1 into a mixio.
+  Put the mixio's square root in another mixio.
+  Convert the other mixio to a string called actual.
+  Stash the test result given the actual.
+
+To test (mixio square root of 100):
+  Create a test result about "trig"
+    And "mixio square root of 100" and expecting "10".
+  Convert 100 into a mixio.
+  Put the mixio's square root in another mixio.
+  Convert the other mixio to an actual string.
+  Stash the test result given the actual.
+
+To test (mixio square root of 1000000):
+  Create a test result about "trig"
+    And "mixio square root of 1000000" and expecting "1000".
+  Convert 1000000 into a mixio.
+  Put the mixio's square root in another mixio.
+  Convert the other mixio to an actual string.
+  Stash the test result given the actual.
+
+To test (mixio square root of 1002000):
+  Make a fuzzy test about "trig"
+    And "mixio square root of 1002000"
+    And targeting 2004001/2002 with tight tolerance.
+  Convert 1002000 into a mixio.
+  Put the mixio's square root in an actual mixio.
+  Stash the fuzzy test given the actual.
+
+To test (mixio square root of 1002001):
+  Create a test result about "trig"
+    And "mixio square root of 1002001" and expecting "1001".
+  Convert 1002001 into a mixio.
+  Put the mixio's square root in another mixio.
+  Convert the other mixio to an actual string.
+  Stash the test result given the actual.
+
+To test (mixio square root of 121):
+  Create a test result about "trig"
+    And "mixio square root of 121" and expecting "11".
+  Convert 121 into a mixio.
+  Put the mixio's square root in another mixio.
+  Convert the other mixio to an actual string.
+  Stash the test result given the actual.
+
+To test (mixio square root of 1866240000):
+  Create a test result about "trig"
+    And "mixio square root of 1866240000" and expecting "43200".
+  Convert 1866240000 into a mixio.
+  Put the mixio's square root in another mixio.
+  Convert the other mixio to an actual string.
+  Stash the test result given the actual.
+
+To test (mixio square root of 2147395600):
+  Create a test result about "trig"
+    And "mixio square root of 2147395600" and expecting "46340".
+  Convert 2147395600 into a mixio.
+  Put the mixio's square root in another mixio.
+  Convert the other mixio to an actual string.
+  Stash the test result given the actual.
+
+To test (mixio square root of 2147483647):
+  Make a fuzzy test about "trig"
+    And "mixio square root of 2147483647"
+    And targeting 926819/20 with tolerance 21600 trifles.
+  Convert 2147483647 into a mixio.
+  Put the mixio's square root in an actual mixio.
+  Stash the fuzzy test given the actual.
+
+To test (mixio square root of 3):
+  Make a fuzzy test about "trig"
+    And "mixio square root of 3"
+    And targeting 1292969/746496 with tight tolerance.
+  Convert 3 into a mixio.
+  Put the mixio's square root in a mixio called actual.
+  Stash the fuzzy test given the actual.
+
+To test (mixio square root of 81):
+  Create a test result about "trig"
+    And "mixio square root of 81" and expecting "9".
+  Convert 81 into a mixio.
+  Put the mixio's square root in another mixio.
+  Convert the other mixio to a string called actual.
+  Stash the test result given the actual.
+
+To test (mixio square root of 99):
+  Make a fuzzy test about "trig"
+    And "mixio square root of 99"
+    And targeting 41264119/4147200 with tolerance 5 trifles.
+  Convert 99 into a mixio.
+  Put the mixio's square root in a mixio called actual.
+  Stash the fuzzy test given the actual.
+
+To test (mixio square root of 999999):
+  Make a fuzzy test about "trig"
+    And "mixio square root of 999999"
+    And targeting 1999999/2000 with tight tolerance.
+  Convert 999999 into a mixio.
+  Put the mixio's square root in a mixio called actual.
+  Stash the fuzzy test given the actual.
+
+To test (mixio square root):
+  Test (mixio square root of 0).
+  Test (mixio square root of 1).
+  Test (mixio square root of 3).
+  Test (mixio square root of 81).
+  Test (mixio square root of 99).
+  Test (mixio square root of 100).
+  Test (mixio square root of 121).
+  Test (mixio square root of 999999).
+  Test (mixio square root of 1000000).
+  Test (mixio square root of 1002000).
+  Test (mixio square root of 1002001).
+  Test (mixio square root of 1866240000).
+  Test (mixio square root of 2147395600).
+  Test (mixio square root of 2147483647).
+
+To test (trig - -1 is not wrapped between 0 and 99):
+  Create a test result about "trig"
+    And "-1 is not wrapped between 0 and 99"
+    And expecting "unwrapped".
+  Put "unwrapped" in a string called actual.
+  If -1 is wrapped given 0 and 99,
+    Put "wrapped" in the actual.
+  Stash the test result using the actual.
+
+To test (trig - arccosine of -1):
+  Put pi in some radians.
+  Make a fuzzy test about "trig" and "arccosine of -1" 
+    And targeting the radians with tight tolerance.
+  Put -1 in a cosine.
+  Get some radians called actual given the cosine.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arccosine of 0):
+  Put half pi in some radians.
+  Make a fuzzy test about "trig" and "arccosine of 0" 
+    And targeting the radians with tight tolerance.
+  Put 0 in a cosine.
+  Get some radians called actual given the cosine.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arccosine of 1):
+  Convert 0 into some radians.
+  Make a fuzzy test about "trig" and "arccosine of 1" 
+    And targeting the radians with tight tolerance.
+  Put 1 in a cosine.
+  Get some radians called actual given the cosine.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arccosine of 1/2):
+  Put tau in some radians.
+  Divide the radians by 6.
+  Make a fuzzy test about "trig" and "arccosine of 1/2" 
+    And targeting the radians with tight tolerance.
+  Put 1/2 in a cosine.
+  Get some radians called actual given the cosine.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arccosine):
+  Test (trig - arccosine of 0).
+  Test (trig - arccosine of 1/2).
+  Test (trig - arccosine of 1).
+  Test (trig - arccosine of -1).
+
+To test (trig - arcsine of -1):
+  Put tau in some radians.
+  Divide the radians by 4.
+  Negate the radians.
+  Normalize the radians.
+  Make a fuzzy test about "trig" and "arcsine of -1" 
+    And targeting the radians with tight tolerance.
+  Put -1/1 in a sine.
+  Get some radians called actual given the sine.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arcsine of 0):
+  Convert 0 into some radians.
+  Make a fuzzy test about "trig" and "arcsine of 0" 
+    And targeting the radians with tight tolerance.
+  Put 0 in a sine.
+  Get some radians called actual given the sine.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arcsine of 1):
+  Put tau in some radians.
+  Divide the radians by 4.
+  Make a fuzzy test about "trig" and "arcsine of 1" 
+    And targeting the radians with tight tolerance.
+  Put 1/1 in a sine.
+  Get some radians called actual given the sine.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arcsine of 1/2):
+  Put tau in some radians.
+  Divide the radians by 12.
+  Make a fuzzy test about "trig" and "arcsine of 1/2" 
+    And targeting the radians with tight tolerance.
+  Put 1/2 in a sine.
+  Get some radians called actual given the sine.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arcsine):
+  Test (trig - arcsine of 0).
+  Test (trig - arcsine of 1/2).
+  Test (trig - arcsine of 1).
+  Test (trig - arcsine of -1).
+
+To test (trig - arctangent of -1):
+  Put tau in some radians.
+  Divide the radians by 8.
+  Negate the radians.
+  Normalize the radians.
+  Make a fuzzy test about "trig" and "arctangent of -1" 
+    And targeting the radians with tight tolerance.
+  Put -1 in a tangent.
+  Get some radians called actual given the tangent.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arctangent of -1/5):
+  Create a test result about "trig" and "arctangent of -1/5" 
+    And expecting "348°41’24.24”".
+  Put -1/5 in a tangent.
+  Get a trig angle given the tangent.
+  Convert the trig angle to a string called actual.
+  Stash the test result given the actual.
+
+To test (trig - arctangent of -116640/418111321):
+  Create a test result about "trig"
+    And "arctangent of -116640/418111321" 
+    And expecting "359°59’2.46”".
+  Put -116640/418111321 in a tangent.
+  Get a trig angle given the tangent.
+  Convert the trig angle to a string called actual.
+  Stash the test result given the actual.
+
+To test (trig - arctangent of -14):
+  Create a test result about "trig" and "arctangent of -14" 
+    And expecting "274°5’8.22”".
+  Put -14 in a tangent.
+  Get a trig angle given the tangent.
+  Convert the trig angle to a string called actual.
+  Stash the test result given the actual.
+
+To test (trig - arctangent of 0):
+  Convert 0 into some radians.
+  Make a fuzzy test about "trig" and "arctangent of 0" 
+    And targeting the radians with tight tolerance.
+  Put 0 in a tangent.
+  Get some radians called actual given the tangent.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arctangent of 1):
+  Put tau in some radians.
+  Divide the radians by 8.
+  Make a fuzzy test about "trig" and "arctangent of 1" 
+    And targeting the radians with tight tolerance.
+  Put 1 in a tangent.
+  Get some radians called actual given the tangent.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arctangent of 1/12):
+  Create a test result about "trig" and "arctangent of 1/12" 
+    And expecting "4°45’49.11”".
+  Put 1/12 in a tangent.
+  Get a trig angle given the tangent.
+  Convert the trig angle to a string called actual.
+  Stash the test result given the actual.
+
+To test (trig - arctangent of 12):
+  Create a test result about "trig" and "arctangent of 12" 
+    And expecting "85°14’10.89”".
+  Put 12 in a tangent.
+  Get a trig angle given the tangent.
+  Convert the trig angle to a string called actual.
+  Stash the test result given the actual.
+
+To test (trig - arctangent of 3/4):
+  Create a test result about "trig" and "arctangent of 3/4" 
+    And expecting "36°52’11.63”".
+  Put 3/4 in a tangent.
+  Get a trig angle given the tangent.
+  Convert the trig angle to a string called actual.
+  Stash the test result given the actual.
+
+To test (trig - arctangent of 4/3):
+  Create a test result about "trig" and "arctangent of 4/3" 
+    And expecting "53°7’48.37”".
+  Put 4/3 in a tangent.
+  Get a trig angle given the tangent.
+  Convert the trig angle to a string called actual.
+  Stash the test result given the actual.
+
+To test (trig - arctangent of largest number):
+  Put tau in some radians.
+  Divide the radians by 4.
+  Make a fuzzy test about "trig" and "arctangent of largest number" 
+    And targeting the radians with tight tolerance.
+  Put the largest number in a tangent.
+  Get some radians called actual given the tangent.
+  Stash the fuzzy test given the actual.
+
+To test (trig - arctangent):
+  Test (trig - arctangent of 0).
+  Test (trig - arctangent of 1).
+  Test (trig - arctangent of -1).
+  Test (trig - arctangent of -14).
+  Test (trig - arctangent of -1/5).
+  Test (trig - arctangent of 1/12).
+  Test (trig - arctangent of 3/4).
+  Test (trig - arctangent of 4/3).
+  Test (trig - arctangent of 12).
+  Test (trig - arctangent of largest number).
+  Test (trig - arctangent of -116640/418111321).
+
+To test (trig - convert from 0 radians to 0°):
+  Make a fuzzy test about "trig" 
+    And "convert from 0 radians to 0°" 
+    And targeting 0/1 with tight tolerance.
+  Convert 0 into some radians.
+  Convert the radians to a trig angle.
+  Convert the trig angle to a mixio.
+  Stash the fuzzy test given the mixio.
+
+To test (trig - convert from 0° to 0 radians):
+  Make a fuzzy test about "trig" 
+    And "convert from 0° to 0 radians" 
+    And targeting 0/1 with tight tolerance.
+  Make a trig angle given 0.
+  Convert the trig angle to some radians called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - convert from 225° to radians):
+  Make a fuzzy test about "trig" 
+    And "convert from 225° to radians" 
+    And targeting 366435367/93312000 with tight tolerance.
+  Make a trig angle given 225.
+  Convert the trig angle to some radians called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - convert from 359°59’59.99” to radians):
+  Make a fuzzy test about "trig" 
+    And "convert from 359°59’59.99” to radians" 
+    And targeting 1954321943/311040000 with tight tolerance.
+  Make a trig angle given 359 and 59 and 59 and 99.
+  Convert the trig angle to some radians called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - convert from degrees to radians):
+  Test (trig - convert from 225° to radians).
+  Test (trig - convert from 0° to 0 radians).
+  Test (trig - convert from 359°59’59.99” to radians).
+
+To test (trig - convert from pi radians to 180°):
+  Make a fuzzy test about "trig" 
+    And "convert from pi radians to 180°" 
+    And targeting 180/1 with tight tolerance.
+  Put tau in some radians.
+  Divide the radians by 2.
+  Convert the radians to a trig angle.
+  Convert the trig angle to a mixio.
+  Stash the fuzzy test given the mixio.
+
+To test (trig - convert from radians to degrees):
+  Test (trig - convert from pi radians to 180°).
+  Test (trig - convert from 0 radians to 0°).
+
+To test (trig - convert mixio to string):
+  Create a test result about "trig"
+    And "convert mixio to string"
+    And expecting "-100-221/432".
+  Make a mixio given -100 and -22100 and 0.
+  Normalize the mixio.
+  Convert the mixio to a string called actual.
+  Stash the test result using the actual.
+
+To test (trig - convert trig angle to mixio):
+  Create a test result about "trig"
+    And "convert trig angle to mixio"
+    And expecting "4-56677/120000".
+  Make a trig angle given 4 and 28 and 20 and 31.
+  Convert the trig angle to a mixio.
+  Convert the mixio to an actual string.
+  Stash the test result using the actual.
+
+To test (trig - cosine of -240°):
+  Make a fuzzy test about "trig" and "cosine of -240°" 
+    And targeting -1/2 with tight tolerance.
+  Make a trig angle given -240.
+  Put the trig angle's cosine in a cosine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - cosine of 0°):
+  Make a fuzzy test about "trig" and "cosine of 0°" 
+    And targeting 1/1 with tight tolerance.
+  Make a trig angle given 0.
+  Put the trig angle's cosine in a cosine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - cosine of 1/2 radian):
+  Make a fuzzy test about "trig" and "cosine of 1/2 radian" 
+    And targeting 1137347/1296000 with tight tolerance.
+  Make a mixio given 0 and 21600 and 0.
+  Put the mixio in some radians.
+  Put the radians' cosine in a cosine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - cosine of 30°):
+  Make a fuzzy test about "trig" and "cosine of 30°" 
+    And targeting 1292969/1492992 with tight tolerance.
+  Make a trig angle given 30.
+  Put the trig angle's cosine in a cosine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - cosine of 360°):
+  Make a fuzzy test about "trig" and "cosine of 360°" 
+    And targeting 1/1 with tight tolerance.
+  Make a trig angle given 360.
+  Put the trig angle's cosine in a cosine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - cosine of 41°15’):
+  Make a fuzzy test about "trig" and "cosine of 41°15’" 
+    And targeting 1403113522/1866240000 with tight tolerance.
+  Make a trig angle given 41 and 15 and 0 and 0.
+  Put the trig angle's cosine in a cosine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - cosine of 45°):
+  Make a fuzzy test about "trig" and "cosine of 45°" 
+    And targeting 16495387/23328000 with tight tolerance.
+  Make a trig angle given 45.
+  Put the trig angle's cosine in a cosine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - cosine of 90°):
+  Make a fuzzy test about "trig" and "cosine of 90°" 
+    And targeting 0/1 with tight tolerance.
+  Make a trig angle given 90.
+  Put the trig angle's cosine in a cosine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - cosine):
+  Test (trig - cosine of -240°).
+  Test (trig - cosine of 0°).
+  Test (trig - cosine of 1/2 radian).
+  Test (trig - cosine of 30°).
+  Test (trig - cosine of 41°15’).
+  Test (trig - cosine of 45°).
+  Test (trig - cosine of 90°).
+  Test (trig - cosine of 360°).
+
+To test (trig - divide mixios):
+  Create a test result about "trig"
+    And "divide mixios"
+    And expecting "0 + 23567/43200 + 40782/1866240000".
+  Make a mixio given 0 and 17 and 15149.
+  Make another mixio given 0 and 31 and 34722.
+  Divide the mixio by the other mixio returning a mixio called result.
+  Convert the result to a string (long).
+  Stash the test result using the string.
+
+To test (trig - mixio / 388800):
+  Make a fuzzy test about "trig" and "mixio / 388800" 
+    And targeting 1 / 1 with tight tolerance.
+  Convert 388800 into an actual mixio.
+  Divide the actual by 388800.
+  Stash the fuzzy test given the actual.
+
+To test (trig - multiply mixios):
+  Create a test result about "trig"
+    And "multiply mixios"
+    And expecting "142 + 21600/43200 + 23/1866240000".
+  Make a mixio given 22 and 21600 and 0.
+  Make another mixio given 6 and 14400 and 1.
+  Multiply the mixio by the other mixio returning a mixio called result.
+  Convert the result to a string (long).
+  Stash the test result using the string.
+
+To test (trig - normalize -123°-45’-6”-78cas to 236°14’53.22”):
+  Create a test result about "trig"
+    And "normalize -123°-45’-6”-78cas to 236°14’53.22”"
+    And expecting "236°14’53.22”".
+  Make a trig angle called actual with -123 and -45 and -6 and -78.
+  Normalize the actual.
+  Stash the test result using the actual.
+
+To test (trig - normalize 0° to 0°):
+  Create a test result about "trig"
+    And "normalize 0° to 0°"
+    And expecting "0°".
+  Make a trig angle called actual with 0.
+  Normalize the actual.
+  Stash the test result using the actual.
+
+To test (trig - normalize 0°0’0”-1cas to 359°59’59.99”):
+  Create a test result about "trig"
+    And "normalize 0°0’0”-1cas to 359°59’59.99”"
+    And expecting "359°59’59.99”".
+  Make a trig angle called actual with 0 and 0 and 0 and -1.
+  Normalize the actual.
+  Stash the test result using the actual.
+
+To test (trig - normalize 360°60’60”100cas to 1°1’1”):
+  Create a test result about "trig"
+    And "normalize 360°60’60”100cas to 1°1’1”"
+    And expecting "1°1’1”".
+  Make a trig angle called actual with 360 and 60 and 60 and 100.
+  Normalize the actual.
+  Stash the test result using the actual.
+
+To test (trig - normalize 432°10’54.32” to 72°10’54.32”):
+  Create a test result about "trig"
+    And "normalize 432°10’54.32” to 72°10’54.32”"
+    And expecting "72°10’54.32”".
+  Make a trig angle called actual with 72 and 10 and 54 and 32.
+  Normalize the actual.
+  Stash the test result using the actual.
+
+To test (trig - normalize largest angle to 169°35’3.47”):
+  Create a test result about "trig"
+    And "normalize largest angle to 169°35’3.47”"
+    And expecting "169°35’3.47”".
+  Make a trig angle called actual with the largest number
+    And the largest number and the largest number and the largest number.
+  Normalize the actual.
+  Stash the test result using the actual.
+
+To test (trig - normalize radians -84821 to about 2):
+  Make a fuzzy test about "trig" 
+    And "normalize radians -84821 to 2" 
+    And targeting 23059/11520 with tight tolerance.
+  Convert -84821 into some actual radians.
+  Normalize the actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - normalize radians -84822 to about 1):
+  Make a fuzzy test about "trig" 
+    And "normalize radians -84822 to 1" 
+    And targeting 11539/11520 with tight tolerance.
+  Convert -84822 into some actual radians.
+  Normalize the actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - normalize radians 0 to 0):
+  Make a fuzzy test about "trig" and "normalize radians 0 to 0" 
+    And targeting 0/1 with tight tolerance.
+  Convert 0 into some actual radians.
+  Normalize the actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - normalize radians 6 to 6):
+  Make a fuzzy test about "trig" 
+    And "normalize radians 6 to 6" 
+    And targeting 6/1 with tight tolerance.
+  Convert 6 into some actual radians.
+  Normalize the actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - normalize radians 7):
+  Make a fuzzy test about "trig" 
+    And "normalize radians 7" 
+    And targeting 111479021/155520000 with tight tolerance.
+  Convert 7 into some actual radians.
+  Normalize the actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - normalize radians 977160980 to 1):
+  Make a fuzzy test about "trig" 
+    And "normalize radians 977160980 to 1" 
+    And targeting 1/1 with tight tolerance.
+  Convert 977160980 into some actual radians.
+  Normalize the actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - normalize radians):
+  Test (trig - normalize radians 0 to 0).
+  Test (trig - normalize radians 977160980 to 1).
+  Test (trig - normalize radians -84822 to about 1).
+  Test (trig - normalize radians -84821 to about 2).
+  Test (trig - normalize radians 6 to 6).
+  Test (trig - normalize radians 7).
+
+To test (trig - normalize smallest angle to 189°23’55.52”):
+  Create a test result about "trig"
+    And "normalize smallest angle to 189°23’55.52”"
+    And expecting "189°23’55.52”".
+  Make a trig angle called actual with the smallest number
+    And the smallest number and the smallest number and the smallest number.
+  Normalize the actual.
+  Stash the test result using the actual.
+
+To test (trig - normalize trig angle):
+  Test (trig - normalize 360°60’60”100cas to 1°1’1”).
+  Test (trig - normalize 0° to 0°).
+  Test (trig - normalize 0°0’0”-1cas to 359°59’59.99”).
+  Test (trig - normalize largest angle to 169°35’3.47”).   \each place has largest number
+  Test (trig - normalize smallest angle to 189°23’55.52”). \each place has smallest number
+  Test (trig - normalize -123°-45’-6”-78cas to 236°14’53.22”).
+  Test (trig - normalize 432°10’54.32” to 72°10’54.32”).
+
+To test (trig - sine of -240°):
+  Make a fuzzy test about "trig" and "sine of -240°" 
+    And targeting 1292969/1492992 with tight tolerance.
+  Make a trig angle given -240.
+  Put the trig angle's sine in a sine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - sine of 0°):
+  Make a fuzzy test about "trig" and "sine of 0°" 
+    And targeting 0/1 with tight tolerance.
+  Make a trig angle given 0.
+  Put the trig angle's sine in a sine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - sine of 30°):
+  Make a fuzzy test about "trig" and "sine of 30°" 
+    And targeting 1/2 with tight tolerance.
+  Make a trig angle given 30.
+  Put the trig angle's sine in a sine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - sine of 360°):
+  Make a fuzzy test about "trig" and "sine of 360°" 
+    And targeting 0/14400 with tight tolerance.
+  Make a trig angle given 360.
+  Put the trig angle's sine in a sine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - sine of 41°15’):
+  Make a fuzzy test about "trig" and "sine of 41°15’" 
+    And targeting 18457463/27993600 with tight tolerance.
+  Make a trig angle given 41 and 15 and 0 and 0.
+  Put the trig angle's sine in a sine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - sine of 45°):
+  Make a fuzzy test about "trig" and "sine of 45°" 
+    And targeting 16495387/23328000 with tight tolerance.
+  Make a trig angle given 45.
+  Put the trig angle's sine in a sine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - sine of 90°):
+  Make a fuzzy test about "trig" and "sine of 90°" 
+    And targeting 1/1 with tight tolerance.
+  Make a trig angle given 90.
+  Put the trig angle's sine in a sine called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - sine):
+  Test (trig - sine of -240°).
+  Test (trig - sine of 0°).
+  Test (trig - sine of 30°).
+  Test (trig - sine of 41°15’).
+  Test (trig - sine of 45°).
+  Test (trig - sine of 90°).
+  Test (trig - sine of 360°).
+
+To test (trig - tangent of -240°):
+  Make a fuzzy test about "trig" and "tangent of -240°" 
+    And targeting -1292969/746496 with tight tolerance.
+  Make a trig angle given -240.
+  Put the trig angle's tangent in a tangent called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - tangent of -90°):
+  Make a fuzzy test about "trig" and "tangent of -90°" 
+    And targeting the largest number / 1 with tight tolerance.
+  Make a trig angle given 90.
+  Put the trig angle's tangent in a tangent called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - tangent of 0°):
+  Make a fuzzy test about "trig" and "tangent of 0°" 
+    And targeting 0/1 with tight tolerance.
+  Make a trig angle given 0.
+  Put the trig angle's tangent in a tangent called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - tangent of 30°):
+  Make a fuzzy test about "trig" and "tangent of 30°" 
+    And targeting 14964919/25920000 with tight tolerance.
+  Make a trig angle given 30.
+  Put the trig angle's tangent in a tangent called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - tangent of 360°):
+  Make a fuzzy test about "trig" and "tangent of 360°" 
+    And targeting 0/1 with tight tolerance.
+  Make a trig angle given 360.
+  Put the trig angle's tangent in a tangent called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - tangent of 41°15’):
+  Make a fuzzy test about "trig" and "tangent of 41°15’" 
+    And targeting 272774759/311040000 with tight tolerance.
+  Make a trig angle given 41 and 15 and 0 and 0.
+  Put the trig angle's tangent in a tangent called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - tangent of 45°):
+  Make a fuzzy test about "trig" and "sine of 45°" 
+    And targeting 1/1 with tight tolerance.
+  Make a trig angle given 45.
+  Put the trig angle's tangent in a tangent called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - tangent of 90°):
+  Make a fuzzy test about "trig" and "tangent of 90°" 
+    And targeting the largest number / 1 with tight tolerance.
+  Make a trig angle given 90.
+  Put the trig angle's tangent in a tangent called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - tangent of pi/4 radians):
+  Make a fuzzy test about "trig" and "sine of pi/4 radians" 
+    And targeting 1/1 with tight tolerance.
+  Put tau in some radians.
+  Divide the radians by 8.
+  Put the radians' tangent in a tangent called actual.
+  Stash the fuzzy test given the actual.
+
+To test (trig - tangent):
+  Test (trig - tangent of -240°).
+  Test (trig - tangent of 0°).
+  Test (trig - tangent of 30°).
+  Test (trig - tangent of 41°15’).
+  Test (trig - tangent of 45°).
+  Test (trig - tangent of pi/4 radians).
+  Test (trig - tangent of 90°).
+  Test (trig - tangent of -90°).
+  Test (trig - tangent of 360°).
+
+To test (trig - wrap -1 between 0 and 99):
+  Create a test result about "trig"
+    And "wrap -1 between 0 and 99"
+    And expecting "99".
+  Put -1 in a number called actual.
+  Wrap the actual given 0 and 99.
+  Stash the test result using the actual.
+
+To test (trig - wrap):
+  Test (trig - -1 is not wrapped between 0 and 99).
+  Test (trig - wrap -1 between 0 and 99).
+
+To test (trig):
+  Test (trig - wrap).
+  Test (trig - normalize trig angle).
+  Test (trig - convert trig angle to mixio).
+  Test (trig - convert mixio to string).
+  Test (trig - divide mixios).
+  Test (trig - normalize radians).
+  Test (trig - multiply mixios).
+  Test (trig - convert from degrees to radians).
+  Test (trig - convert from radians to degrees).
+  Test (trig - sine).
+  Test (trig - cosine).
+  Test (trig - tangent).
+  Test (trig - arcsine).
+  Test (trig - arccosine).
+  Test (trig - arctangent).
+  Test (trig - mixio / 388800).
+  Test (mixio square root).
+
+The trifle denominator is a number equal to 1866240000. \ 43,200 * 43,200
+
+The trifle root is 43200.
+
+Some trifles are a number. \ divided by trifle denominator.
+
+A trig angle has             \ normalized ranges.  counter-clockwise from right/east.
+  A number called degrees,      \   0° - 359°
+  A number called minutes,      \   0’ -  59’
+  A number called seconds, and  \   0” -  59”
+  A number called hundredths.   \   0  -  99 cas
+
+To wrap a number given a number called alpha and a number called omega:
+  Wrap the number given the alpha and the omega and 0.
+
+To wrap a number given a number called alpha and a number called omega and another number:
+  If the number is wrapped given the alpha and the omega, exit.
+  If the alpha is the omega,
+    Put the alpha in the number; exit.
+  Put the omega minus the alpha in a number called period.
+  Add 1 to the period.
+  Put the number minus the alpha in a number called shifted.
+  If the shifted is the smallest number,
+    Add the period to the shifted;
+    Subtract 1 from the other number.
+  If the shifted is at least 0,
+    Divide the shifted by the period giving a quotient and a remainder;
+    Add the quotient to the other number;
+    Add the alpha to the remainder;
+    Put the remainder in the number;
+    Exit.
+  Negate the shifted.
+  Divide the shifted by the period giving the quotient and the remainder.
+  Negate the quotient.
+  Negate the remainder.
+  If the remainder is 0,
+    Add the quotient to the other number;
+    Put the remainder in the number; exit.
+  Add the period to the remainder.
+  Subtract 1 from the quotient.
+  Add the quotient to the other number.
+  Put the remainder in the number.

@@ -1,0 +1,208 @@
+\ Copyright 2017, 2019 by Jasper Paulsen.
+
+A byte array has
+  A string, and
+  A bedrock count.
+  \ The bedrock count is the number of contiguous bytes,
+  \ starting with the first byte of the string,
+  \ that have been determined to have valid values.
+  \ It is possible for bytes after the bedrock count
+  \ to have valid values, but it is also possible for
+  \ some or all such bytes to be 0 because their
+  \ correct values have not been determined yet.
+
+To clear a one-indexed position in a flag array:
+  Convert the one-indexed position to a zero-indexed position.
+  Divide the zero-indexed position by 8 giving a quotient and a remainder.
+  Put the quotient in another zero-indexed position.
+  Convert the other zero-indexed position to another one-indexed position.
+  Get a byte from the flag array's byte array at the other one-indexed position.
+  Put 2 in a number.
+  Raise the number to the remainder.
+  Put the number in another byte.
+  Invert the other byte.
+  Bitwise and the byte with the other byte.
+  Set the byte in the flag array's byte array at the other one-indexed position.
+  Put the flag array's bedrock count in a count.
+  Add 1 to the count.
+  If the one-indexed position is the count,
+    Put the count in the flag array's bedrock count.
+
+To convert a one-indexed position to a zero-indexed position:
+  Put the one-indexed position in the zero-indexed position.
+  Subtract 1 from the zero-indexed position.
+
+To convert a zero-indexed position to a one-indexed position:
+  Put the zero-indexed position in the one-indexed position.
+  Add 1 to the one-indexed position.
+
+To debug a flag array:
+  Summarize the flag array returning a string (tersely).
+  Debug the string.
+
+To decide if a byte array is empty:
+  If the byte array's bedrock count is at most 0, say yes.
+  If the byte array's string is "", say yes.
+  Say no.
+
+To decide if a flag array is empty:
+  If the flag array's bedrock count is at most 0, say yes.
+  If the flag array's byte array is empty, say yes.
+  Say no.
+
+To decide if a one-indexed position is clear in a flag array:
+  If the one-indexed position is set in the flag array, say no.
+  Say yes.
+
+To decide if a one-indexed position is set in a flag array:
+  Convert the one-indexed position to a zero-indexed position.
+  Divide the zero-indexed position by 8 giving a quotient and a remainder.
+  Put the quotient in another zero-indexed position.
+  Convert the other zero-indexed position to another one-indexed position.
+  Get a byte from the flag array's byte array at the other one-indexed position.
+  Put 2 in a number.
+  Raise the number to the remainder.
+  If the number is bitwise included in the byte,
+    Say yes.
+  Say no.
+
+A flag array has
+  A byte array, and
+  A bedrock count.
+  \ The bedrock count is the number of contiguous bits,
+  \ starting with the first bit of the flag array,
+  \ that have been determined to have valid values.
+  \ It is possible for bits after the bedrock count
+  \ to have valid values, but it is also possible for
+  \ some or all such bits to be 0 because their
+  \ correct values have not been determined yet.
+
+To get a byte from a byte array at a one-indexed position:
+  Get the byte from the byte array's string at the one-indexed position.
+
+To grow a byte array through a count:
+  If the byte array's capacity is at least the count, exit.
+  Privatize the count.
+  Subtract the byte array's capacity from the count.
+  Fill a string with the null byte given the count.
+  Append the string to the byte array's string.
+
+To grow a flag array through a count:
+  If the flag array's capacity is at least the count, exit.
+  Privatize the count.
+  \ there are 8 bits in a byte.
+  Round the count up to the nearest multiple of 8.
+  Divide the count by 8.
+  Grow the flag array's byte array through the count.
+
+A one-indexed position is a number.
+
+To put a byte array's capacity into a count:
+  Put the byte array's string's length into the count.
+
+To put a flag array's capacity into a count:
+  Put the flag array's byte array's capacity into the count.
+  \ there are 8 bits in a byte.
+  Multiply the count by 8.
+
+To set a byte in a byte array at a one-indexed position:
+  Set the byte in the byte array's string at the one-indexed position.
+  Put the byte array's bedrock count in a count.
+  Add 1 to the count.
+  If the one-indexed position is the count,
+    Put the count in the byte array's bedrock count.
+
+To set a byte in a string at a one-indexed position:
+  If the one-indexed position is at most 0, exit.
+  If the one-indexed position is greater than the string's length, exit.
+  Put the string's first into a byte pointer.
+  Convert the one-indexed position to a zero-indexed position.
+  Add the zero-indexed position to the byte pointer.
+  Put the byte in the byte pointer's target.
+
+To set a one-indexed position in a flag array:
+  Convert the one-indexed position to a zero-indexed position.
+  Divide the zero-indexed position by 8 giving a quotient and a remainder.
+  Put the quotient in another zero-indexed position.
+  Convert the other zero-indexed position to another one-indexed position.
+  Get a byte from the flag array's byte array at the other one-indexed position.
+  Put 2 in a number.
+  Raise the number to the remainder.
+  Bitwise or the byte with the number.
+  Set the byte in the flag array's byte array at the other one-indexed position.
+  Put the flag array's bedrock count in a count.
+  Add 1 to the count.
+  If the one-indexed position is the count,
+    Put the count in the flag array's bedrock count.
+
+To summarize a byte array returning a string (tersely):
+  Put the byte array's capacity in a capacity count.
+  Put the byte array's bedrock count in a count.
+  If the capacity is less than the count,
+    Put the capacity in the count.
+  Slap a substring on the byte array's string.
+  Put the substring's first plus the count minus 1 into the substring's last.
+  Put the substring in another string.
+  Convert the other string to a nibble string.
+  Convert the nibble string to a hex string.
+  Put the nibble string in the string.
+  If the string is not "", append "; " to the string.
+  Append "valid bytes / capacity bytes = "
+    Then the byte array's bedrock count then " / "
+    Then the byte array's capacity to the string.
+
+To summarize a flag array returning a string (tersely):
+  Put "" in the string.
+  Put the flag array's capacity in a capacity count.
+  Put the flag array's bedrock count in a count.
+  If the capacity is less than the count,
+    Put the capacity in the count.
+  Loop.
+    Add 1 to a number.
+    If the number is greater than the count, break.
+    If the number is clear in the flag array, repeat.
+    If the string is not "", append ", " to the string.
+    Append the number to the string.
+  Repeat.
+  If the string is not "", append "; " to the string.
+  Append "bedrock / capacity = "
+    Then the flag array's bedrock count then " / "
+    Then the flag array's capacity to the string.
+
+To test (arrays - clear a flag):
+  Create a test result about "arrays" and "clear a flag"
+    And expecting "no".
+  Put 45 in a one-indexed position.
+  Grow a flag array through 64.
+  Set the one-indexed position in the flag array.
+  Put 53 in the flag array's bedrock count.  
+  If the one-indexed position is set in the flag array, set a flag.
+  Clear the one-indexed position in the flag array.  
+  If the one-indexed position is clear in the flag array, clear the flag.
+  Stash the test result given the flag.
+
+To test (arrays - flags start clear):
+  Create a test result about "arrays" and "set a flag"
+    And expecting "no".
+  Grow a flag array through 64.
+  Put 47 in a one-indexed position.
+  Put 53 in the flag array's bedrock count.  
+  If the one-indexed position is set in the flag array, set a flag.
+  Stash the test result given the flag.
+
+To test (arrays - set a flag):
+  Create a test result about "arrays" and "set a flag"
+    And expecting "yes".
+  Grow a flag array through 64.
+  Put 47 in a one-indexed position.
+  Set the one-indexed position in the flag array.
+  Put 53 in the flag array's bedrock count.  
+  If the one-indexed position is set in the flag array, set a flag.
+  Stash the test result given the flag.
+
+To test (arrays):
+  Test (arrays - flags start clear).
+  Test (arrays - set a flag).
+  Test (arrays - clear a flag).
+
+A zero-indexed position is a number.
