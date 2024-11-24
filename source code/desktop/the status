@@ -1,0 +1,715 @@
+\ The portions of this file that are from CAL-3040
+\ are copyright 2006 by the Osmosian Order.
+\ The remainder is copyright 2014, 2017, 2019 by Jasper Paulsen.
+
+\ The status is part of the desktop's pad.
+\ The status contains the test results.
+\ The status uses menu items to summarize the test results,
+\   and show sample test results.
+
+To append the failures from a test result set to another test result set (copying failures):
+  Loop.
+    Get a test result from the test result set's test results.
+    If the test result is nil, exit.
+    If the test result is not OK,
+      Create a test result called duplicate given the test result;
+      Append the duplicate to the other test result set.
+  Repeat.
+
+To append a result set to a buffer:
+  Append the result set's test results to the buffer.
+
+To append a test result to a result set:
+  Append the test result to the result set's test results.
+  If the test result is OK, add one to the result set's passed.
+  If the test result is not OK, add one to the result set's failed.
+
+To append some test results to a buffer:
+  Loop.
+    Get a test result from the test results.
+    If the test result is nil, exit.
+    Summarize the test result returning a string.
+    Append the string to the buffer.
+    Advance the buffer.
+  Repeat.
+
+To check a test result given a string called actual:
+  If the actual is the test result's expectation,
+    Pass the test result given the actual.
+  If the actual is not the test result's expectation,
+    Fail the test result given the actual.
+
+To create a test result:
+  Allocate memory for the test result.
+  Start the test result's timer.
+
+To create a test result (without starting timer):
+  Allocate memory for the test result.
+
+To create a test result about a string called context and a string called test name and expecting an expectation:
+  Create the test result.
+  Describe the test result given the context and the test name.
+  Put the expectation in the test result's expectation.
+
+To create a test result called duplicate given a test result:
+  Create the duplicate (without starting timer).
+  Put the test result's context in the duplicate's context.
+  Put the test result's test name in the duplicate's test name.
+  Put the test result's expectation in the duplicate's expectation.
+  Put the test result's actual value in the duplicate's actual value.
+  Put the test result's interpretation in the duplicate's interpretation.
+  Put the test result's timer in the duplicate's timer.
+
+To decide if 3-way-match given an expectation and a string and an interpretation:
+  If the expectation is not the string, say no.
+  If the expectation is the interpretation, say yes.
+  Say no.
+
+To decide if one should be hidden given a number and a quota:
+  If the number is not 1, say no.
+  If the quota is greater than 0, say no.
+  Say yes.
+
+To decide if a result set is OK:
+  If the result set's passed is 0, say no.
+  If the result set's failed is 0, say yes.
+  Say no.
+
+To decide if a spot is in the status:
+  If the bar's mode is not "normal", say no.
+  If the spot is in the status' roundy box, say yes.
+  Say no.
+
+To decide if a test result is OK:
+  If the test result's interpretation
+    Is the test result's expectation, say yes.
+  Say no.
+
+To decide if the tests failed:
+  If the status' all test results' failed is 0, say no.
+  Say yes.
+
+To decide if the tests passed:
+  If the status' all test results is OK, say yes.
+  Say no.
+
+To decide if the trio shoves the status:
+  If there is not room (for the trio), say no.
+  Count menu rows returning a count.
+  If the count is 1, say yes.
+  Say no.
+
+To describe a test result given a string called context and a string called test name:
+  Put the context in the test result's context.
+  Put the test name in the test result's test name.
+
+To draw the status:
+  \ if list or compile or test was requested,
+  \ the noodle's to refresh routines will not display anything.
+  Unmask everything.
+  Draw the status' roundy box with the desktop color and the desktop color.
+  Draw the status' roundy box with the black color and the status' color.
+  Put the status' roundy box into a box.
+  Adjust the box given 1/8 inch and 0 and -1/8 inch and 0.
+  Mask outside the box.
+  If the status' string is not "",
+    Update lingering status.
+  If the status' string is "",
+    Put the lingering status string in the status' string.
+  Draw the status' string in the box
+    With the black color and the default font and "right".
+
+To fail a test result given a string called actual:
+  \ assumes that the test result's expectation is already populated.
+  Put the actual in the test result's actual value.
+  Put the actual in the test result's interpretation.
+
+To finalize a result set:
+  Destroy the result set's test results.
+
+To finalize the status:
+  Finalize the status' all test results.
+  Finalize the status' failures.
+  Destroy the status' command.
+
+To handle a command (copy test result):
+  Put the command's handler in a handler.
+  Put "handle test result " in a prefix.
+  Get a number from the handler given the prefix.
+  If the number is less than 1,
+      Debug the handler (because it is undispatched); exit.
+  Handle the command given the number (copy test result).
+
+To handle a command (tests failed...):
+  Widen the command.
+  Create a submenu.
+  Put the test quota in a quota.
+  Put the status' failures' failed in a number called failed.
+  Summarize failure given the failed and the quota returning a string.
+  Add the string and "(Click a result to copy it.)"
+    And "handle test quota" to the submenu.
+  Handle the command given the submenu and the quota
+    And the status' failures' test results.
+
+To handle a command (tests passed...):
+  Widen the command.
+  Create a submenu.
+  Put the test quota in a quota.
+  Put the status' all test results' passed in a number called passed.
+  Summarize success given the passed and the quota returning a string.
+  Add the string and "(Click a result to copy it.)"
+    And "handle test quota" to the submenu.
+  Handle the command given the submenu and the quota
+    And the status' all test results' test results.
+
+To handle a command given a number (copy test result):
+  Tint the status.
+  Show status "Copying...".
+  Put the command's name on the windows clipboard.
+  Show the desktop with "Copied".
+
+To handle a command given a submenu and a quota and some test results:
+  Sort the test results (by jiffies).
+  Reverse the test results.
+  Put 1 in a number called counter.
+  Loop.
+    If the counter is greater than the quota, break.
+    Get a test result from the test results.
+    If the test result is nil, break.
+    Summarize the test result returning a name.
+    Put "handle test result " then the counter into a handler.
+    Add the name and the handler to the submenu.
+    Add 1 to the counter.
+  Repeat.
+  Widen the submenu to the command's width.
+  Refont the submenu.
+  Handle the command given the submenu.
+
+To handle an event (left click - status):
+  If the status' started tests is yes,
+    Handle the event (show cached test results); exit.
+  Handle the event (regression test).
+
+To handle an event (regression test):
+  Put yes in the status' started tests.
+  Untint the status.
+  Show status "Testing...".
+  Test.
+  Put "Tests took " then the status' all test results' timer's formatted string
+    In a message.
+  Show status the message.
+  If the current tab is nil,
+    Handle the event (show cached test results); exit.
+  Summarize the status' all test results returning a string.
+  Append the string to a buffer.
+  Advance the buffer.
+  Append the status' all test results to the buffer.
+  Put the module's directory then "test results.txt" in a path.
+  Write the buffer to the path.
+  If the i/o error is blank,
+    Append ".  Saved results." to the message.
+  Show status the message.
+  If the i/o error is not blank,
+    Linger the status;
+    Show error the i/o error.
+  Handle the event (show cached test results).
+
+To handle an event (requested test):
+  If test was not requested, cluck; exit.
+  If the status' started tests is yes, exit.
+  Put yes in the status' started tests.
+  Test.
+  If the tests failed,
+    Put 1 in the return code.
+  Summarize the status' all test results returning a string.
+  Append the string to a buffer.
+  Advance the buffer.
+  If verbose test was requested,
+    Append the status' all test results to the buffer.
+  If verbose test was not requested,
+    Append the status' failures to the buffer.
+  Write the buffer to stderr.
+
+To handle an event (show cached test results):
+  Tint the status.
+  Widen the status' command to 3 inches.
+  Put the status' roundy box's right
+    Minus the status' command's width
+    Into a number called left.
+  Put the left into the status' command's roundy box's left.
+  Create a submenu.
+  Summarize the status' all test results returning a string.
+  If the tests passed,
+    Add the string and "tests passed..." to the submenu.
+  If the tests failed,
+    Add the string and "tests failed..." to the submenu.
+  Widen the submenu to the status' command's width.
+  Refont the submenu.
+  Handle the status' command given the submenu.
+
+To handle test quota:
+  Put the maximum test quota into a quota called max.
+  Ask "Show how many tests (0-" then the max then ")?" with the test quota.
+  If the answer is blank, exit.
+  If the answer is not any numeric literal,
+    Show error "Invalid test quota."; exit.
+  Convert the answer to a number.
+  If the number is less than 0,
+    Show error "Invalid test quota."; exit.
+  If the number is more than the max,
+    Show error "I can only show 0-" then the max then " tests.  "
+      Then the max then " is the best I can do.";
+    Put the max in the number.
+  If the number is the test quota, exit.
+  Put the number in the test quota.
+  If the tests passed,
+    Handle the status' command (tests passed...); exit.
+  Handle the status' command (tests failed...).
+
+To initialize a result set:
+  Put 0 in the result set's passed.
+  Put 0 in the result set's failed.
+
+To initialize the status:
+  Create the status' command.
+  Initialize the status' all test results.
+  Initialize the status' failures.
+  Resize the status.
+  Put the green color's lightest shade into the status' pass color.
+  Put the red color's lightest shade into the status' fail color.
+  Untint the status.
+  Put no in the status' started tests.
+
+To linger the status:
+  Put the status' string in the lingering status string.
+  \ This causes the as-drawn status to linger
+  \ until the status' string is changed to a different value
+  \ (other than "".)  See also "to update lingering status"
+  \ and "to draw the status".
+
+The lingering status string is a string.
+
+To make a fuzzy test about a string and another string and targeting a binary logarithm with tolerance a number:
+  Convert the number to a tolerance bigint.
+  Make the fuzzy test about the string and the other string
+    And targeting the binary logarithm's mantissa as a bigint
+    With tolerance the tolerance bigint.
+  Put the binary logarithm's bits in the fuzzy test's bits.
+
+To make a fuzzy test about a string and another string and targeting a bullseye bigint with tolerance a tolerance bigint:
+  Start the fuzzy test's timer.
+  Put the string in the fuzzy test's context.
+  Put the other string in the fuzzy test's test name.
+  Put the bullseye bigint in the fuzzy test's bullseye.
+  Put the tolerance bigint in the fuzzy test's tolerance bigint.
+
+To make a fuzzy test about a string and another string and targeting a bullseye string with tolerance a number:
+  Convert the bullseye string to a bullseye bigint.
+  Convert the number to a tolerance bigint.
+  Make the fuzzy test about the string and the other string
+    And targeting the bullseye bigint with tolerance the tolerance bigint.
+
+To make a fuzzy test about a string and another string and targeting a mixio with tight tolerance:
+  Make the fuzzy test about the string and the other string  
+    And targeting the mixio with tolerance 4 trifles.
+
+To make a fuzzy test about a string and another string and targeting a mixio with tolerance some trifles:
+  Convert the mixio to a premix.
+  Convert the trifles to a tolerance bigint.
+  Make the fuzzy test about the string and the other string
+    And targeting the premix as a bigint
+    With tolerance the tolerance bigint.
+
+To make a fuzzy test about a string and another string and targeting a ratio with tight tolerance:
+  Convert the ratio to a mixio.
+  Make the fuzzy test about the string and the other string
+    And targeting the mixio with tight tolerance.
+
+To make a fuzzy test about a string and another string and targeting a ratio with tolerance some trifles:
+  Convert the ratio to a mixio.
+  Make the fuzzy test about the string and the other string
+    And targeting the mixio with tolerance the trifles.
+
+The maximum test quota is a quota equal to 15.
+
+To pass a test result given a string called actual:
+  \ assumes that the test result's expectation is already populated.
+  Put the actual in the test result's actual value.
+  Put the test result's expectation in the test result's interpretation.
+
+To put a fuzzy test's maximum into a bigint:
+  Put the fuzzy test's bullseye bigint in the bigint.
+  Add the fuzzy test's tolerance bigint to the bigint.
+
+To put a fuzzy test's minimum into a bigint:
+  Put the fuzzy test's bullseye bigint in the bigint.
+  Subtract the fuzzy test's tolerance bigint from the bigint.
+
+To put a fuzzy test's tolerance ratio into a ratio:
+  Put the fuzzy test's tolerance bigint into a premix as a bigint.
+  Convert the premix into a mixio.
+  Convert the mixio into the ratio.
+  Reduce the ratio.
+
+To put a test result's timeliness into a string:
+  If the test result's timer is imprecise,
+    Put "." into the string; exit.
+  Cache the test result's timer.
+  Put " in " into the string.
+  If the test result's timer's cached days are positive,
+    Append the test result's timer's cached days
+      Then " days." to the string;
+    Exit.
+  If the test result's timer's cached seconds are positive,
+    Convert the test result's timer's cached seconds
+      To another string (HH:MM:SS);
+    Append the other string then "." to the string;
+    Exit.
+  If the test result's timer's cached milliseconds are positive,
+    Append the test result's timer's cached milliseconds
+      Then " ms." to the string;
+    Exit.
+  If the test result's timer's cached microseconds are positive,
+    Append the test result's timer's cached microseconds
+      Then " " then the micro byte then "s." to the string;
+    Exit.
+  If the test result's timer's cached nanoseconds are positive,
+    Append the test result's timer's cached nanoseconds
+      Then " ns." to the string;
+    Exit.
+  Put "." into the string.
+
+A quota is a number.
+
+To refont a submenu:
+  If the submenu is nil, exit.
+  Get a current font.
+  Loop.
+    Get a command from the submenu's commands.
+    If the command is nil, exit.
+    Put the current font's name into the command's font's name.
+    If the current font's height is at most the command's font's height,
+      Put the current font's height into the command's font's height.
+  Repeat.
+
+To resize the status:
+  Put the bar's display and 1/12 inch into the status' roundy box.
+  Put the status' roundy box's bottom minus the command height
+    Into the status' roundy box's top.
+  Put the trio allowance into a width.
+  If the trio shoves the status,
+    Put the status' right minus the width into the status' right.
+  Put the menu's commands' last's right into the status' left.
+
+A result set has a number called passed,
+  A number called failed,
+  A timer,
+  And some test results.
+
+To show the status:
+  \ if list or compile or test was requested,
+  \ the noodle's to refresh routines will not display anything.
+  Draw the status.
+  Refresh the screen given the status' roundy box.
+
+To show status a number and a string or another string:
+  Format the number and the string or the other string into a third string.
+  Show status the third string.
+
+To show status a string:
+  Put the string into the status' string.
+  Show the status.
+
+To sort some test results (by jiffies):
+  If the test results' first is the test results' last, exit.
+  If the test results' first's timer is imprecise, exit.
+  Split the test results
+    Into some left test results and some right test results.
+  Sort the left test results (by jiffies).
+  Sort the right test results (by jiffies).
+  Loop.
+    Put the left test results' first into a left test result.
+    Put the right test results' first into a right test result.
+    If the left test result is nil,
+      Append the right test results to the test results; exit.
+    If the right test result is nil,
+      Append the left test results to the test results; exit.
+    Put the left test result's timer's jiffies into some left jiffies.
+    Put the right test result's timer's jiffies into some right jiffies.
+    If the left jiffies are greater than the right jiffies,
+      Move the right test result from the right test results to the test results;
+      Repeat.
+    Move the left test result from the left test results to the test results.
+  Repeat.
+
+To stash a fuzzy test given a bigint:
+  Create a test result (without starting timer).
+  Put the fuzzy test's context in the test result's context.
+  Put the fuzzy test's test name in the test result's test name.
+  Convert the fuzzy test's bullseye bigint into the test result's expectation.
+  If the fuzzy test's tolerance bigint is not 0,
+    Append " ± " then the fuzzy test's tolerance bigint
+     To the test result's expectation.
+  Convert the bigint into a string.
+  Pass the test result given the string.
+  If the bigint is greater than the fuzzy test's maximum,
+\    debug the premix then " is greater than " then the fuzzy test's maximum;
+    Fail the test result given the string.
+  If the bigint is less than the fuzzy test's minimum,
+\    debug the fuzzy test's bullseye
+\      then " ± " then the fuzzy test's tolerance ratio
+\      then "; expected " then the test result's expectation
+\      then "; " then the mixio then " is less than " then the fuzzy test's minimum;
+\    debug the premix;
+\    debug the fuzzy test's minimum;
+    Fail the test result given the string.
+  Stop the fuzzy test's timer.
+  Put the fuzzy test's timer in the test result's timer.
+  Append the test result to the status' all test results.
+
+To stash a fuzzy test given a binary logarithm:
+  Create a test result (without starting timer).
+  Put the fuzzy test's context in the test result's context.
+  Put the fuzzy test's test name in the test result's test name.
+  Convert the fuzzy test's binary logarithm
+    And the fuzzy test's tolerance bigint
+    Into the test result's expectation.
+  Convert the binary logarithm into a string.
+  Pass the test result given the string.
+  If the binary logarithm's bits are not the fuzzy test's bits,
+    Fail the test result given the string.
+  If the binary logarithm's mantissa as a bigint
+    Is greater than the fuzzy test's maximum,
+      Fail the test result given the string.
+  If the binary logarithm's mantissa as a bigint
+    Is less than the fuzzy test's minimum,
+      Fail the test result given the string.
+  Stop the fuzzy test's timer.
+  Put the fuzzy test's timer in the test result's timer.
+  Append the test result to the status' all test results.
+
+To stash a fuzzy test given a mixio:
+  Create a test result (without starting timer).
+  Put the fuzzy test's context in the test result's context.
+  Put the fuzzy test's test name in the test result's test name.
+  Put the fuzzy test's bullseye bigint into a bullseye premix as a bigint.
+  Convert the bullseye premix to a bullseye mixio.
+  Convert the bullseye mixio into the test result's expectation.
+  If the fuzzy test's tolerance bigint is not 0,
+    Append " ± " then the fuzzy test's tolerance ratio
+     To the test result's expectation.
+  Convert the mixio into a string.
+  Pass the test result given the string.
+  Convert the mixio to a premix.
+  If the premix as a bigint is greater than the fuzzy test's maximum,
+\    debug the premix then " is greater than " then the fuzzy test's maximum;
+    Fail the test result given the string.
+  If the premix as a bigint is less than the fuzzy test's minimum,
+\    debug the fuzzy test's bullseye
+\      then " ± " then the fuzzy test's tolerance ratio
+\      then "; expected " then the test result's expectation
+\      then "; " then the mixio then " is less than " then the fuzzy test's minimum;
+\    debug the premix;
+\    debug the fuzzy test's minimum;
+    Fail the test result given the string.
+  Stop the fuzzy test's timer.
+  Put the fuzzy test's timer in the test result's timer.
+  Append the test result to the status' all test results.
+
+To stash a test result given a bigint:
+  Convert the bigint into a string called actual.
+  Stash the test result given the actual.
+
+To stash a test result given a binary logarithm:
+  Convert the binary logarithm into a string called actual.
+  Stash the test result given the actual.
+
+To stash a test result given a flag:
+  Convert the flag into a string called actual.
+  Stash the test result given the actual.
+
+To stash a test result given a number:
+  Convert the number into a string called actual.
+  Stash the test result given the actual.
+
+To stash a test result given a string:
+  Check the test result given the string.
+  Append the test result to the status' all test results.
+  Stop the test result's timer.
+
+The status has a roundy box and a string
+  And a color and a pass color and a fail color
+  And a result set called all test results
+  And a result set called failures
+  And a command
+  And a flag called started tests.
+
+To summarize failure given a number and a quota returning a string:
+  Summarize given the number and "failed" and the quota returning the string.
+
+To summarize given a number and a string and a quota returning a string called result:
+  If the number is less than 1,
+    Put "No tests " then the string then "." in the result; exit.
+  If one should be hidden given the number and the quota,
+    Put "1 test " then the string then "." in the result; exit.
+  If the quota is less than 1,
+    Put the number then " tests " then the string then "." in the result; exit.
+  If the number is 1,
+    Put "1 test " then the string then ".  It was:" in the result; exit.
+  If the quota is 1,
+    Put the number then " tests " then the string then "."
+      Then "  The longest 1 is:" in the result; exit.
+  Put the number then " tests " then the string in the result.
+  If the number is at most the quota,
+    Append ":" to the result.
+  If the number is more than the quota,
+    Append ".  The longest " then the quota then " were:" to the result.
+
+To summarize given a number and a string returning a string called result:
+  If the number is 0,
+    Put "No tests " then the string then "." into the result; exit.
+  If the number is 1,
+    Put "1 test " then the string then "." into the result; exit.
+  Put the number then " tests " then the string then "." into the result.
+
+To summarize success given a number and a quota returning a string:
+  Summarize given the number and "passed" and the quota returning the string.
+
+To summarize a test result returning a string:
+  Summarize the test result returning the string (description).
+  Put the test result's expectation in an expectation.
+  Put the test result's actual value in a string called actual.
+  Put the test result's interpretation in an interpretation.
+  Put the test result's timeliness in a timeliness string.
+  Append "  Expected '" then the expectation then "'" to the string.
+  \ expectation == actual == interpretation => OK
+  If 3-way-match given the expectation and the actual and the interpretation,
+    Append ", which I got" then the timeliness to the string; exit.
+  \ expectation == interpretation != actual => OK
+  If the expectation is the interpretation,
+    Append ", and got '" then the actual then "'"
+      Then ", which is OK" then the timeliness to the string; exit.
+  \ actual == expectation != interpretation => not OK, but should not happen.
+  If the actual is the expectation,
+    Append ", which I got, but it meant '" then the interpretation then "'"
+      Then ", so the test failed" then the timeliness to the string; cluck; exit.
+  \ actual == interpretation != expectation -> not OK.
+  If the actual is the interpretation,
+    Append ", but I got '" then the actual then "'"
+      Then ", so the test failed" then the timeliness to the string; exit.
+  \ all 3 are different.
+  Append ", but I got '" then the actual then "'" to the string.
+  Append " which is '" then the interpretation then "'" to the string.
+  Append ", so the test failed" then the timeliness to the string.
+
+To summarize a test result returning a string (description):
+  Put "In " then the test result's context
+    Then ", tried " then the test result's test name then "." in the string.
+
+To summarize a test result set returning a string:
+  Put the test result set's passed in a number called passed.
+  Put the test result set's failed in a number called failed.
+  Put the passed plus the failed in a number called total.
+  If the test result set is OK,
+    Summarize given the passed and "passed" returning the string; exit.
+  If the test result set is not OK,
+    Summarize given the failed and "failed" returning the string;
+    Append "  Just " then the passed then " / " then the total then " were OK."
+      To the string; exit.
+  Put "The tests have not run yet." into the string.
+
+To test:
+  Test (all).
+  Append the failures from the status' all test results
+    To the status' failures (copying failures).
+  If test was not requested,
+    Tint the status; exit.
+
+To test (all):
+  Start the status' all test results' timer.
+  \ noodle subfolder
+  Test (the noodle).
+  Test (characters).
+  Test (arrays).
+  Test (colors).
+  Test (text).
+  Test (ratios).
+  Test (trig).
+  Test (bigints).
+  \ desktop subfolder
+  Test (the compiler).
+  Test (the desktop).
+  Test (font menus).
+  Test (the status).
+  Test (the finder).
+  Test (the editor).
+  Test (the writer).
+  Test (bonus).
+  Stop the status' all test results' timer.
+  Test (the testing time).
+
+To test (the status - minimum width):
+  Put 1/2 inch in a number called minimum.
+  Put "at least " then the minimum in an expectation.
+  Create a test result about "the status" and "minimum width"
+    And expecting the expectation.
+  Convert the status' width into an actual string.
+  If the status' width is at least the minimum,
+    Pass the test result given the actual.
+  If the status' width is not at least the minimum,
+    Fail the test result given the actual.
+  Stop the test result's timer.
+  Append the test result to the status' all test results.
+
+To test (the status):
+  Test (the status - minimum width).
+
+To test (the testing time):
+  Put 10 seconds in a number called maximum.
+  Put "at most " then the maximum
+    Then " ms" in a string called expectation.
+  Create a test result about "the status" and "maximum testing time"
+    And expecting the expectation.
+  Put the status' all test results' timer's string
+    Then " ms" in a string called actual.
+  If the status' all test results' timer's total ticks is at most the maximum,
+    Pass the test result given the actual.
+  If the status' all test results' timer's total ticks is more than the maximum,
+    Fail the test result given the actual.
+  Stop the test result's timer.
+  Append the test result to the status' all test results.
+
+The test quota is a quota equal to 10.
+
+To tint the status:
+  If the tests passed,
+    Put the status' pass color into the status' color; exit.
+  If the tests failed,
+    Put the status' fail color into the status' color; exit.
+  Untint the status.
+
+To untint the status:
+  Put the white color into the status' color.
+
+To update lingering status:
+  If the status' string is the lingering status string, exit.
+  If the status' string is "", exit.
+  Put "" in the lingering status string.
+
+To widen a command:
+  Widen the command to the status' roundy box's right
+    Minus the bar's display's left.
+  Put the bar's display's left into the command's roundy box's left.
+
+To widen a command to a width:
+  Put the width into the command's width.
+  Put the width plus the command's roundy box's left
+    Into the command's roundy box's right.
+
+To widen a submenu to a width:
+  If the submenu is nil, exit.
+  Loop.
+    Get a command from the submenu's commands.
+    If the command is nil, exit.
+    Widen the command to the width.
+  Repeat.
